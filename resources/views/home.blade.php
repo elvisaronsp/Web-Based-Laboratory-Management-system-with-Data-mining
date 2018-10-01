@@ -226,7 +226,7 @@
 
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item">
-                                    <a class="nav-link" id="home-tab" data-toggle="tab" href="#report" role="tab" aria-controls="home" aria-selected="true">Reports</a>
+                                    <a class="nav-link" id="home-tab" data-toggle="tab" href="#report" role="tab" aria-controls="home" aria-selected="true">Add Reports</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="naexceeds your upload_max_filesize ini directive v-link" id="profile-tab" data-toggle="tab" href="#summary" role="tab" aria-controls="profile" aria-selected="false">Summary</a>
@@ -329,8 +329,18 @@
                                                                     </button>
                                                                 </div>
                                                                 <div id="section-to-print" class="modal-body section-to-print">
-                                                                    hu dkla
-
+                                                                <form action="#" method="post">
+                                                                    <label>Payment Status</label>
+                                                                    <select name="" class="form-control" required>
+                                                                        <option value="1">Paid</option>
+                                                                        <option value="2">Not Paid</option>
+                                                                    </select>
+                                                                    <br>
+                                                                    <input type="hidden" class="form-control" value="{{$users->id}}" required>
+                                                                    <label>Fasting Blood Glucose mg/dl</label>
+                                                                    <input type="number" step="0.01" name="" class="form-control" required>
+                                                                    <br>
+                                                                </form>
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -343,14 +353,38 @@
                                                         <div class="modal-dialog" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                                    <h1 style="text-align: center" class="modal-title" id="exampleModalLabel">Lipid Profile</h1>
                                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                         <span aria-hidden="true">&times;</span>
                                                                     </button>
                                                                 </div>
                                                                 <div id="section-to-print" class="modal-body section-to-print">
-                                                                    hu dkla
+                                                                    <form action="#" method="post">
+                                                                        <label>Payment Status</label>
+                                                                        <select name="" class="form-control" required>
+                                                                            <option value="1">Paid</option>
+                                                                            <option value="2">Not Paid</option>
+                                                                        </select>
+                                                                        <br>
+                                                                        <input type="hidden" class="form-control" value="{{$users->id}}" required>
+                                                                        <label>Serum Cholestrol mg/dl</label>
+                                                                        <input type="number" step="0.01" name="" class="form-control" required>
+                                                                        <br>
+                                                                        <label>Triglycerides mg/dl</label>
+                                                                        <input type="number" step="0.01" name="" class="form-control" required>
+                                                                        <br>
 
+                                                                        <label>HDL Cholestrol mg/dl</label>
+                                                                        <input type="number" step="0.01" name="" class="form-control" required>
+                                                                        <br>
+
+                                                                        <label>Vldl Cholestrol mg/dl</label>
+                                                                        <input type="number" step="0.01" name="" class="form-control" required>
+                                                                        <br>
+
+                                                                        <label>Choiesterol/HDL Ratio</label>
+                                                                        <input type="number" step="0.01" name="" class="form-control" required>
+                                                                    </form>
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
