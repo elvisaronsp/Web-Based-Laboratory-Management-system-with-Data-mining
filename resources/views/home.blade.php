@@ -177,6 +177,7 @@
         @if(Auth::user()->role=="MLT")
                 <div class="row">
 
+
                     <div class="col-md-4">
                         <div class="profile-img">
                             @if(!is_file(base_path() . '/public/img/'.Auth::user()->id))
@@ -228,7 +229,7 @@
                                     <a class="nav-link" id="home-tab" data-toggle="tab" href="#report" role="tab" aria-controls="home" aria-selected="true">Reports</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#summary" role="tab" aria-controls="profile" aria-selected="false">Summary</a>
+                                    <a class="naexceeds your upload_max_filesize ini directive v-link" id="profile-tab" data-toggle="tab" href="#summary" role="tab" aria-controls="profile" aria-selected="false">Summary</a>
                                 </li>
                             </ul>
                         </div>
@@ -247,14 +248,31 @@
                     <div class="col-md-8">
                         <div class="tab-content profile-tab" id="myTabContent">
                             <div class="tab-pane fade active in" id="report" role="tabpanel" aria-labelledby="home-tab">
-                                <div class="panel-body" style="border:solid; border-radius: 25px">
+                                <input class="form-control" id="myInput" type="text" placeholder="Search..">
+                                @foreach($user as $users)
+                                    <ul class="list-group" id="myList">
+                                        <li class="list-group-item">
+
+                                    <div class="panel-body" style="border:solid; border-radius: 25px">
                                     <div class="row">
                                         <div class="col-md-6">
 
-                                            <p>Your report of the date 2015/02/4</p>
+                                                <p>Name: {{$users->name}}</p>
+                                                <p>Email: {{$users->email}}</p>
+                                                <p>Gender: {{$users->gender}}</p>
+                                                <?php
+                                                    $date = new DateTime($users->dob);
+                                                    $now = new DateTime();
+                                                    $interval = $now->diff($date);
+                                                ?>
+                                                <p>Age: {{$interval->y}}</p>
+
+
+
 
                                         </div>
                                         <div class="col-md-6">
+
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     {{--<form action="{{route('reportPayment')}}" method="post">--}}
@@ -264,12 +282,24 @@
                                                     {{--</form>--}}
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
-                                                        View Report
+                                                    <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#fbc{{$users->id}}">
+                                                        + Full blood count
                                                     </button>
 
+                                                    <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#bs{{$users->id}}">
+                                                        + Blood Suger
+                                                    </button>
+                                                    <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#lp{{$users->id}}">
+                                                        + Lipid Profile
+                                                    </button>
+                                                    <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#sc{{$users->id}}">
+                                                        + serum Creatanin
+                                                    </button>
+                                                    <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#lf{{$users->id}}">
+                                                        + Liver function Test
+                                                    </button>
                                                     <!-- Modal -->
-                                                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal fade" id="fbc{{$users->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
@@ -289,11 +319,96 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <div class="modal fade" id="bs{{$users->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div id="section-to-print" class="modal-body section-to-print">
+                                                                    hu dkla
+
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                    <button type="button" class="btn btn-primary" onclick="window.print();">Print</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal fade" id="lp{{$users->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div id="section-to-print" class="modal-body section-to-print">
+                                                                    hu dkla
+
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                    <button type="button" class="btn btn-primary" onclick="window.print();">Print</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal fade" id="sc{{$users->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div id="section-to-print" class="modal-body section-to-print">
+                                                                    hu dkla
+
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                    <button type="button" class="btn btn-primary" onclick="window.print();">Print</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal fade" id="lf{{$users->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div id="section-to-print" class="modal-body section-to-print">
+                                                                    hu dkla
+
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                    <button type="button" class="btn btn-primary" onclick="window.print();">Print</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                        </li>
+                                    </ul>
+                                @endforeach
 
 
                             </div>
@@ -315,6 +430,16 @@
 
     </div>
 
+<script>
+    $(document).ready(function(){
+        $("#myInput").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#myList li").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+</script>
 <script>
     var ctx = document.getElementById("myChart").getContext("2d");
     var lab = [1,2,3,4,5] ;
