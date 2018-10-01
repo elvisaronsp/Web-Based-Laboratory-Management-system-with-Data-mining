@@ -39,6 +39,28 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('gender') ? ' has-error' : '' }}">
+                            <label for="email" class="col-md-4 control-label">Gender</label>
+
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label><input type="radio" name="gender" style="float: right" value="male" checked required>Male</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <label><input type="radio" name="gender" style="float: left" value="female" required>Female</label>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group{{ $errors->has('dob') ? ' has-error' : '' }}">
+                            <label for="email" class="col-md-4 control-label">Date of Birth</label>
+                            <div class="col-md-6">
+                                <input type="date" name="dob"  class="form-control" value="{{ old('dob') }}" required>
+                            </div>
+                        </div>
+
+
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">Password</label>
 
