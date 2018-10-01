@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class HomeController extends Controller
 {
@@ -24,5 +26,13 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+
+    public function uploadPhoto(Request $request){
+        $request->file('pic')->move(
+            base_path() . '/public/img/', Auth::user()->id
+        );
+
+        return back();
     }
 }
