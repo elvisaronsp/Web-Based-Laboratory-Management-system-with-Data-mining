@@ -517,10 +517,10 @@
                                     <a class="nav-link" id="home-tab" data-toggle="tab" href="#report" role="tab" aria-controls="home" aria-selected="true">Add Reports</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="naexceeds your upload_max_filesize ini directive v-link" id="profile-tab" data-toggle="tab" href="#summary" role="tab" aria-controls="profile" aria-selected="false">Reports</a>
+                                    <a class="naexceeds your upload_max_filesize ini directive v-link" id="viewReport-tab" data-toggle="tab" href="#viewReport" role="tab" aria-controls="profile" aria-selected="false">Reports</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="naexceeds your upload_max_filesize ini directive v-link" id="profile-tab" data-toggle="tab" href="#summary" role="tab" aria-controls="profile" aria-selected="false">Employee Management</a>
+                                    <a class="naexceeds your upload_max_filesize ini directive v-link" id="employee-tab" data-toggle="tab" href="#employee" role="tab" aria-controls="profile" aria-selected="false">Employee Management</a>
                                 </li>
                             </ul>
                         </div>
@@ -737,7 +737,7 @@
 
 
                             </div>
-                            <div class="tab-pane fade" id="summary" role="tabpanel" aria-labelledby="profile-tab">
+                            <div class="tab-pane fade" id="viewReport" role="tabpanel" aria-labelledby="profile-tab">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <canvas id="myChart" width="350" height="350"></canvas>
@@ -745,6 +745,12 @@
                                     <div class="col-md-6">
                                         <canvas id="myChart1" width="350" height="350"></canvas>
                                     </div>
+                                </div>
+                                {{--<canvas id="myChart" width="350" height="350"></canvas>--}}
+                            </div>
+                            <div class="tab-pane fade" id="employee" role="tabpanel" aria-labelledby="profile-tab">
+                                <div class="row">
+                                Add members
                                 </div>
                                 {{--<canvas id="myChart" width="350" height="350"></canvas>--}}
                             </div>
