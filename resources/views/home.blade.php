@@ -462,7 +462,7 @@
                 </div>
         @endif
 
-        @if(Auth::user()->role=="Admin")
+        @if(Auth::user()->role=="admin")
                 <div class="row">
 
 
@@ -521,6 +521,12 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="naexceeds your upload_max_filesize ini directive v-link" id="employee-tab" data-toggle="tab" href="#employee" role="tab" aria-controls="profile" aria-selected="false">Employee Management</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="naexceeds your upload_max_filesize ini directive v-link" id="viewReport-tab" data-toggle="tab" href="#viewReport" role="tab" aria-controls="profile" aria-selected="false">Sample Handling</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="naexceeds your upload_max_filesize ini directive v-link" id="employee-tab" data-toggle="tab" href="#employee" role="tab" aria-controls="profile" aria-selected="false">Stock Management</a>
                                 </li>
                             </ul>
                         </div>
