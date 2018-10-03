@@ -523,10 +523,10 @@
                                     <a class="naexceeds your upload_max_filesize ini directive v-link" id="employee-tab" data-toggle="tab" href="#employee" role="tab" aria-controls="profile" aria-selected="false">Employee Management</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="naexceeds your upload_max_filesize ini directive v-link" id="viewReport-tab" data-toggle="tab" href="#viewReport" role="tab" aria-controls="profile" aria-selected="false">Sample Handling</a>
+                                    <a class="naexceeds your upload_max_filesize ini directive v-link" id="sample-tab" data-toggle="tab" href="#sample" role="tab" aria-controls="profile" aria-selected="false">Sample Handling</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="naexceeds your upload_max_filesize ini directive v-link" id="employee-tab" data-toggle="tab" href="#employee" role="tab" aria-controls="profile" aria-selected="false">Stock Management</a>
+                                    <a class="naexceeds your upload_max_filesize ini directive v-link" id="stock-tab" data-toggle="tab" href="#stock" role="tab" aria-controls="profile" aria-selected="false">Stock Management</a>
                                 </li>
                             </ul>
                         </div>
@@ -757,6 +757,18 @@
                             <div class="tab-pane fade" id="employee" role="tabpanel" aria-labelledby="profile-tab">
                                 <div class="row">
                                 Add members
+                                </div>
+                                {{--<canvas id="myChart" width="350" height="350"></canvas>--}}
+                            </div>
+                            <div class="tab-pane fade" id="sample" role="tabpanel" aria-labelledby="profile-tab">
+                                <div class="row">
+                                    sample handling
+                                </div>
+                                {{--<canvas id="myChart" width="350" height="350"></canvas>--}}
+                            </div>
+                            <div class="tab-pane fade" id="stock" role="tabpanel" aria-labelledby="profile-tab">
+                                <div class="row">
+                                    Stock management
                                 </div>
                                 {{--<canvas id="myChart" width="350" height="350"></canvas>--}}
                             </div>
