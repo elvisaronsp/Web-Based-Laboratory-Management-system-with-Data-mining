@@ -328,6 +328,7 @@ class ComposerStaticInit2e6395b13a1982648d39dafa035f9de2
     );
 
     public static $classMap = array (
+        'App\\BloodSuger' => __DIR__ . '/../..' . '/app/BloodSuger.php',
         'App\\Charts\\bar' => __DIR__ . '/../..' . '/app/Charts/bar.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',

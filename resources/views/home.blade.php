@@ -620,28 +620,30 @@
                                                                     <div class="modal-dialog" role="document">
                                                                         <div class="modal-content">
                                                                             <div class="modal-header">
-                                                                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                                                <h5 class="modal-title" id="exampleModalLabel">Fasting Blood Suger</h5>
                                                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                                     <span aria-hidden="true">&times;</span>
                                                                                 </button>
                                                                             </div>
                                                                             <div id="section-to-print" class="modal-body section-to-print">
-                                                                                <form action="#" method="post">
+                                                                                <form action="{{route('bloodSuger')}}" method="post">
+                                                                                    {{csrf_field()}}
+                                                                                    <input type="hidden" name="id" value="{{$users->id}}">
                                                                                     <label>Payment Status</label>
-                                                                                    <select name="" class="form-control" required>
+                                                                                    <select name="payment" class="form-control" required>
                                                                                         <option value="1">Paid</option>
-                                                                                        <option value="2">Not Paid</option>
+                                                                                        <option value="0">Not Paid</option>
                                                                                     </select>
                                                                                     <br>
-                                                                                    <input type="hidden" class="form-control" value="{{$users->id}}" required>
                                                                                     <label>Fasting Blood Glucose mg/dl</label>
-                                                                                    <input type="number" step="0.01" name="" class="form-control" required>
+                                                                                    <input type="number" step="0.01" name="bsvalue" class="form-control" required>
                                                                                     <br>
+                                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                                    <input  type="submit" class="btn btn-primary" value="Submit">
                                                                                 </form>
                                                                             </div>
                                                                             <div class="modal-footer">
-                                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                                                <button type="button" class="btn btn-primary" onclick="window.print();">Print</button>
+
                                                                             </div>
                                                                         </div>
                                                                     </div>

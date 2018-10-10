@@ -34,3 +34,9 @@ Route::get('paymentStatus', [
     'uses' => 'PaymentController@getStatusReport',
     'as' => 'paymentStatus'
 ]);
+
+//route to add blood suger
+Route::post('bloodSuger', [
+    'uses' => 'ReportController@bloodSuger',
+    'as' => 'bloodSuger'
+]);
