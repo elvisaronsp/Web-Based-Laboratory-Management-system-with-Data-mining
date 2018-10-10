@@ -26,7 +26,17 @@
     <div class="container emp-profile">
 
         @if(Auth::user()->role == 'patient')
-
+            <?php
+            $suger=array();
+            $val = array();
+            $count=1;
+            $data = DB::table('blood_sugers')->where('userId',Auth::user()->id)->get();
+            foreach ($data as $d){
+                array_push($suger,$count);
+                array_push($val,$d->bloodSuger);
+                $count+=1;
+            }
+            ?>
         @if(Session::has('success'))
             <div class="alert alert-success" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -329,22 +339,23 @@
                                                                     </button>
                                                                 </div>
                                                                 <div id="section-to-print" class="modal-body section-to-print">
-                                                                <form action="#" method="post">
-                                                                    <label>Payment Status</label>
-                                                                    <select name="" class="form-control" required>
-                                                                        <option value="1">Paid</option>
-                                                                        <option value="2">Not Paid</option>
-                                                                    </select>
-                                                                    <br>
-                                                                    <input type="hidden" class="form-control" value="{{$users->id}}" required>
-                                                                    <label>Fasting Blood Glucose mg/dl</label>
-                                                                    <input type="number" step="0.01" name="" class="form-control" required>
-                                                                    <br>
-                                                                </form>
+                                                                    <form action="{{route('bloodSuger')}}" method="post">
+                                                                        {{csrf_field()}}
+                                                                        <input type="hidden" name="id" value="{{$users->id}}">
+                                                                        <label>Payment Status</label>
+                                                                        <select name="payment" class="form-control" required>
+                                                                            <option value="1">Paid</option>
+                                                                            <option value="0">Not Paid</option>
+                                                                        </select>
+                                                                        <br>
+                                                                        <label>Fasting Blood Glucose mg/dl</label>
+                                                                        <input type="number" step="0.01" name="bsvalue" class="form-control" required>
+                                                                        <br>
+                                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                        <input  type="submit" class="btn btn-primary" value="Submit">
+                                                                    </form>
                                                                 </div>
                                                                 <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                                    <button type="button" class="btn btn-primary" onclick="window.print();">Print</button>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -830,8 +841,8 @@
 </script>
 <script>
     var ctx = document.getElementById("myChart").getContext("2d");
-    var lab = [1,2,3,4,5] ;
-    var dt =[135,88,100,110,95] ;
+    var lab =  <?php echo json_encode($suger); ?>;
+    var dt = <?php echo json_encode($val); ?>;
     var chart = new Chart(ctx, {
         // The type of chart we want to create
 

@@ -26,6 +26,7 @@ class HomeController extends Controller
     public function index()
     {
         $user = DB::table('users')->where('role','patient')->get();
+
         return view('home',compact('user'));
     }
 
