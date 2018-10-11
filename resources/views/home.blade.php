@@ -20,23 +20,23 @@
         }
     </style>
 </head>
-
+<?php
+$suger=array();
+$val = array();
+$count=1;
+$data = DB::table('blood_sugers')->where('userId',Auth::user()->id)->get();
+foreach ($data as $d){
+    array_push($suger,$count);
+    array_push($val,$d->bloodSuger);
+    $count+=1;
+}
+?>
    <!------ Include the above in your HEAD tag ---------->
 
     <div class="container emp-profile">
 
         @if(Auth::user()->role == 'patient')
-            <?php
-            $suger=array();
-            $val = array();
-            $count=1;
-            $data = DB::table('blood_sugers')->where('userId',Auth::user()->id)->get();
-            foreach ($data as $d){
-                array_push($suger,$count);
-                array_push($val,$d->bloodSuger);
-                $count+=1;
-            }
-            ?>
+
         @if(Session::has('success'))
             <div class="alert alert-success" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -669,37 +669,39 @@
                                                                                 </button>
                                                                             </div>
                                                                             <div id="section-to-print" class="modal-body section-to-print">
-                                                                                <form action="#" method="post">
+                                                                                <form action="{{route('lipid')}}" method="post">
+                                                                                    {{csrf_field()}}
                                                                                     <label>Payment Status</label>
-                                                                                    <select name="" class="form-control" required>
+                                                                                    <select name="payment" class="form-control" required>
                                                                                         <option value="1">Paid</option>
                                                                                         <option value="2">Not Paid</option>
                                                                                     </select>
                                                                                     <br>
-                                                                                    <input type="hidden" class="form-control" value="{{$users->id}}" required>
+                                                                                    <input type="hidden" name='id' class="form-control" value="{{$users->id}}" required>
                                                                                     <label>Serum Cholestrol mg/dl</label>
-                                                                                    <input type="number" step="0.01" name="" class="form-control" required>
+                                                                                    <input type="number" name="serum" step="0.01" name="" class="form-control" required>
                                                                                     <br>
                                                                                     <label>Triglycerides mg/dl</label>
-                                                                                    <input type="number" step="0.01" name="" class="form-control" required>
+                                                                                    <input type="number" name="trigly" step="0.01" name="" class="form-control" required>
                                                                                     <br>
 
                                                                                     <label>HDL Cholestrol mg/dl</label>
-                                                                                    <input type="number" step="0.01" name="" class="form-control" required>
+                                                                                    <input type="number" name="hdl" step="0.01" name="" class="form-control" required>
                                                                                     <br>
 
                                                                                     <label>Vldl Cholestrol mg/dl</label>
-                                                                                    <input type="number" step="0.01" name="" class="form-control" required>
+                                                                                    <input type="number" name="vldl" step="0.01" name="" class="form-control" required>
                                                                                     <br>
 
                                                                                     <label>Choiesterol/HDL Ratio</label>
-                                                                                    <input type="number" step="0.01" name="" class="form-control" required>
+                                                                                    <input type="number" name="cholestrol" step="0.01" name="" class="form-control" required>
+                                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                                    <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+
                                                                                 </form>
                                                                             </div>
                                                                             <div class="modal-footer">
-                                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                                                <button type="button" class="btn btn-primary" onclick="window.print();">Print</button>
-                                                                            </div>
+                                                                                </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>

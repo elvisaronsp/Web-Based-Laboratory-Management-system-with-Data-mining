@@ -40,3 +40,9 @@ Route::post('bloodSuger', [
     'uses' => 'ReportController@bloodSuger',
     'as' => 'bloodSuger'
 ]);
+
+//route to add lipis
+Route::post('lipid', [
+    'uses' => 'ReportController@lipid',
+    'as' => 'lipid'
+]);
