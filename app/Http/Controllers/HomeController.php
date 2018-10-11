@@ -26,8 +26,9 @@ class HomeController extends Controller
     public function index()
     {
         $user = DB::table('users')->where('role','patient')->get();
+        $lipidProfile = DB::table('lipid_profiles')->where('userId',Auth::user()->id)->get();
 
-        return view('home',compact('user'));
+        return view('home',compact('user','lipidProfile'));
     }
 
     public function uploadPhoto(Request $request){

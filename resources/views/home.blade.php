@@ -96,7 +96,11 @@ foreach ($data as $d){
 
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link" id="home-tab" data-toggle="tab" href="#report" role="tab" aria-controls="home" aria-selected="true">Reports</a>
+                                <a class="nav-link" id="home-tab" data-toggle="tab" href="#bs" role="tab" aria-controls="home" aria-selected="true">Blood Suger</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" id="home-tab" data-toggle="tab" href="#lp" role="tab" aria-controls="home" aria-selected="true">Lipid Profile</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" id="profile-tab" data-toggle="tab" href="#summary" role="tab" aria-controls="profile" aria-selected="false">Summary</a>
@@ -117,7 +121,7 @@ foreach ($data as $d){
                 </div>
                 <div class="col-md-8">
                     <div class="tab-content profile-tab" id="myTabContent">
-                        <div class="tab-pane fade active in" id="report" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="tab-pane fade active in" id="bs" role="tabpanel" aria-labelledby="home-tab">
                             <div class="panel-body" style="border:solid; border-radius: 25px">
                             <div class="row">
                                 <div class="col-md-6">
@@ -165,6 +169,111 @@ foreach ($data as $d){
                                 </div>
                             </div>
                             </div>
+
+
+                        </div>
+                        <div class="tab-pane fade" id="lp" role="tabpanel" aria-labelledby="home-tab">
+                            @foreach($lipidProfile as $lp)
+                                <div class="panel-body" style="border:solid; border-radius: 25px">
+                                <div class="row">
+                                    <div class="col-md-6">
+
+                                        <p>Your Lipid Profile report of the date {{$lp->created_at}}</p>
+
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                @if($lp->paymentStatus==0)
+                                                <form action="{{route('reportPayment')}}" method="post">
+                                                    {{csrf_field()}}
+                                                    <input type="hidden" name="amount" value="1">
+                                                    <input type="submit" style="float: right" class="btn btn-warning" value="pay">
+                                                </form>
+                                                    @endif
+                                            </div>
+                                            <div class="col-md-6">
+                                                @if($lp->paymentStatus==1)
+                                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#lp{{$lp->id}}">
+                                                    View Report
+                                                </button>
+
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="lp{{$lp->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div id="section-to-print" class="modal-body section-to-print">
+                                                                <?php
+                                                                    $dob = Auth::user()->dob;
+                                                                $date = new DateTime($dob);
+                                                                $now = new DateTime();
+                                                                $interval = $now->diff($date);
+                                                                ?>
+                                                                  <h3 style="text-align: center">Medi Lab</h3>
+                                                                  <h4 style="text-align:center ;">contact us 0717843564</h4>
+
+                                                                Name   : {{Auth::user()->name}}<br>
+                                                                Age    : {{$interval->y}}<br>
+                                                                Gender : {{Auth::user()->gender}}
+
+                                                                    <table class="table borderless">
+                                                                        <thead>
+                                                                        <tr>
+                                                                            <th>Test</th>
+                                                                            <th>Result</th>
+                                                                            <th>units</th>
+                                                                        </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                        <tr>
+                                                                            <td>Serum Cholestrol</td>
+                                                                            <td>{{$lp->serum}}</td>
+                                                                            <td>mg/dl</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Triglycerides</td>
+                                                                            <td>{{$lp->trigly}}</td>
+                                                                            <td>mg/dl</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>HDL Cholestrol</td>
+                                                                            <td>{{$lp->hdl}}</td>
+                                                                            <td>mg/dl</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>VLDL Cholestrol</td>
+                                                                            <td>{{$lp->vldl}}</td>
+                                                                            <td>mg/dl</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Cholestrol/HDL Ratio</td>
+                                                                            <td>{{$lp->cholestrol}}</td>
+                                                                            <td>-</td>
+                                                                        </tr>
+                                                                        </tbody>
+                                                                    </table>
+
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                <button type="button" class="btn btn-primary" onclick="window.print();">Print</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                    @endif
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
 
 
                         </div>
