@@ -122,23 +122,28 @@ foreach ($data as $d){
                 <div class="col-md-8">
                     <div class="tab-content profile-tab" id="myTabContent">
                         <div class="tab-pane fade active in" id="bs" role="tabpanel" aria-labelledby="home-tab">
+
+                            @foreach($sugers as $bs)
                             <div class="panel-body" style="border:solid; border-radius: 25px">
                             <div class="row">
                                 <div class="col-md-6">
 
-                                        <p>Your report of the date 2015/02/4</p>
+                                        <p>Your Blood Suger of the date {{$bs->created_at}}</p>
 
                                 </div>
                                 <div class="col-md-6">
                                     <div class="row">
                                         <div class="col-md-6">
+                                            @if($bs->paymentStatus==0)
                                             <form action="{{route('reportPayment')}}" method="post">
                                                 {{csrf_field()}}
                                                 <input type="hidden" name="amount" value="1">
                                                 <input type="submit" style="float: right" class="btn btn-warning" value="pay">
                                             </form>
+                                             @endif
                                         </div>
                                         <div class="col-md-6">
+                                            @if($bs->paymentStatus==1)
                                             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
                                                 View Report
                                             </button>
@@ -164,11 +169,14 @@ foreach ($data as $d){
                                                     </div>
                                                 </div>
                                             </div>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             </div>
+
+                            @endforeach
 
 
                         </div>
