@@ -30,7 +30,7 @@ class HomeController extends Controller
         $lipidProfile = DB::table('lipid_profiles')->where('userId',Auth::user()->id)->get();
         $sugers = DB::table('blood_sugers')->where('userId',Auth::user()->id)->get();
 
-        return view('home',compact('user','lipidProfile','suger'));
+        return view('home',compact('user','lipidProfile','sugers'));
         //return view('home',(['user'=>$user,'sugers'=>$suger,'lipidProfile'=>$lipidProfile]));
     }
 

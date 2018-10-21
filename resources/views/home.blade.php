@@ -144,22 +144,51 @@ foreach ($data as $d){
                                         </div>
                                         <div class="col-md-6">
                                             @if($bs->paymentStatus==1)
-                                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+                                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#bs{{$bs->id}}">
                                                 View Report
                                             </button>
 
                                             <!-- Modal -->
-                                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal fade" id="bs{{$bs->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                            <h5 class="modal-title" id="exampleModalLabel">Blood Suger Test</h5>
                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
                                                             </button>
                                                         </div>
                                                         <div id="section-to-print" class="modal-body section-to-print">
-                                                            hu dkla
+                                                            <?php
+                                                            $dob = Auth::user()->dob;
+                                                            $date = new DateTime($dob);
+                                                            $now = new DateTime();
+                                                            $interval = $now->diff($date);
+                                                            ?>
+                                                            <h3 style="text-align: center" class="text-primary">Medi Lab</h3>
+                                                            <h5 style="text-align: center">Blood Suger List</h5>
+                                                            <h4 style="text-align:center ;">contact us 0717843564</h4>
+
+                                                            Name   : {{Auth::user()->name}}<br>
+                                                            Age    : {{$interval->y}}<br>
+                                                            Gender : {{Auth::user()->gender}}
+                                                                <table class="table borderless">
+                                                                    <thead>
+                                                                    <tr>
+                                                                        <th>Test</th>
+                                                                        <th>Result</th>
+                                                                        <th>units</th>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                    <tr>
+                                                                        <td>Blood Suger</td>
+                                                                        <td>{{$bs->bloodSuger}}</td>
+                                                                        <td>mg/dl</td>
+                                                                    </tr>
+                                                                    </tbody>
+                                                                </table>
+
 
                                                         </div>
                                                         <div class="modal-footer">
@@ -211,7 +240,7 @@ foreach ($data as $d){
                                                     <div class="modal-dialog" role="document">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                                <h5 class="modal-title" id="exampleModalLabel">Lipid Profile</h5>
                                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                     <span aria-hidden="true">&times;</span>
                                                                 </button>
@@ -223,7 +252,8 @@ foreach ($data as $d){
                                                                 $now = new DateTime();
                                                                 $interval = $now->diff($date);
                                                                 ?>
-                                                                  <h3 style="text-align: center">Medi Lab</h3>
+                                                                  <h3 style="text-align: center" class="text-primary">Medi Lab</h3>
+                                                                  <h5 style="text-align: center" >Lipid Profile</h5>
                                                                   <h4 style="text-align:center ;">contact us 0717843564</h4>
 
                                                                 Name   : {{Auth::user()->name}}<br>
