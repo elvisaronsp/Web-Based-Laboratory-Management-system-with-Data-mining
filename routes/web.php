@@ -46,3 +46,15 @@ Route::post('lipid', [
     'uses' => 'ReportController@lipid',
     'as' => 'lipid'
 ]);
+
+//route to add full blood count
+Route::post('fbc', [
+    'uses' => 'ReportController@fbc',
+    'as' => 'fbc'
+]);
+
+//route to add Liver Function
+Route::post('liver', [
+    'uses' => 'ReportController@liver',
+    'as' => 'liver'
+]);

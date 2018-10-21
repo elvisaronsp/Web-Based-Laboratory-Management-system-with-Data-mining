@@ -728,13 +728,43 @@ foreach ($data as $d){
                                                                     <div class="modal-dialog" role="document">
                                                                         <div class="modal-content">
                                                                             <div class="modal-header">
-                                                                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                                                <h5 class="modal-title" id="exampleModalLabel">Full Blood Count</h5>
                                                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                                     <span aria-hidden="true">&times;</span>
                                                                                 </button>
                                                                             </div>
                                                                             <div id="section-to-print" class="modal-body section-to-print">
-                                                                                hu dkla
+                                                                                <form action="{{route('fbc')}}" method="post">
+                                                                                    {{csrf_field()}}
+                                                                                    <label>Payment Status</label>
+                                                                                    <select name="payment" class="form-control" required>
+                                                                                        <option value="1">Paid</option>
+                                                                                        <option value="2">Not Paid</option>
+                                                                                    </select>
+                                                                                    <br>
+                                                                                    <input type="hidden" name='id' class="form-control" value="{{$users->id}}" required>
+                                                                                    <label>Neutrophil</label>
+                                                                                    <input type="number" name="neutrophil" step="0.01"class="form-control" required>
+                                                                                    <br>
+                                                                                    <label>Lymphocytes</label>
+                                                                                    <input type="number" name="lymphocytes" step="0.01"  class="form-control" required>
+                                                                                    <br>
+
+                                                                                    <label>Monocytes</label>
+                                                                                    <input type="number" name="monocytes" step="0.01" class="form-control" required>
+                                                                                    <br>
+
+                                                                                    <label>Hemoglobin</label>
+                                                                                    <input type="number" name="hemoglobin" step="0.01" class="form-control" required>
+                                                                                    <br>
+
+                                                                                    <label>Red Blood Cells</label>
+                                                                                    <input type="number" name="rbc" step="0.01" name="" class="form-control" required>
+                                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                                    <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+
+                                                                                </form>
+
 
                                                                             </div>
                                                                             <div class="modal-footer">
@@ -852,13 +882,40 @@ foreach ($data as $d){
                                                                                 </button>
                                                                             </div>
                                                                             <div id="section-to-print" class="modal-body section-to-print">
-                                                                                hu dkla
+                                                                                <form action="{{route('liver')}}" method="post">
+                                                                                    {{csrf_field()}}
+                                                                                    <label>Payment Status</label>
+                                                                                    <select name="payment" class="form-control" required>
+                                                                                        <option value="1">Paid</option>
+                                                                                        <option value="2">Not Paid</option>
+                                                                                    </select>
+                                                                                    <br>
+                                                                                    <input type="hidden" name='id' class="form-control" value="{{$users->id}}" required>
+                                                                                    <label>Total Protein g/L</label>
+                                                                                    <input type="number" name="totalProtein" step="0.01"class="form-control" required>
+                                                                                    <br>
+                                                                                    <label>Albumin g/L</label>
+                                                                                    <input type="number" name="albumin" step="0.01"  class="form-control" required>
+                                                                                    <br>
+
+                                                                                    <label>Globulin g/L</label>
+                                                                                    <input type="number" name="globulin" step="0.01" class="form-control" required>
+                                                                                    <br>
+
+                                                                                    <label>Alkaline phosphatase U/L</label>
+                                                                                    <input type="number" name="alkaline" step="0.01" class="form-control" required>
+                                                                                    <br>
+
+                                                                                    <label>Total Bilirubin mol/L</label>
+                                                                                    <input type="number" name="totalBilirubin" step="0.01" name="" class="form-control" required>
+                                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                                    <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+
+                                                                                </form>
+
 
                                                                             </div>
-                                                                            <div class="modal-footer">
-                                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                                                <button type="button" class="btn btn-primary" onclick="window.print();">Print</button>
-                                                                            </div>
+
                                                                         </div>
                                                                     </div>
                                                                 </div>
