@@ -58,3 +58,9 @@ Route::post('liver', [
     'uses' => 'ReportController@liver',
     'as' => 'liver'
 ]);
+
+//route to add sample tranfer
+Route::post('sample', [
+    'uses' => 'SampleController@addSample',
+    'as' => 'sample'
+]);

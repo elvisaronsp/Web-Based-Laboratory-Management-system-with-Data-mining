@@ -34,6 +34,15 @@ foreach ($data as $d){
    <!------ Include the above in your HEAD tag ---------->
 
     <div class="container emp-profile">
+        @if(Session::has('sampleadd'))
+            <div class="alert alert-success" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <strong>Sample Added Successfully</strong>
+            </div>
+            {{ Session::forget('sampleadd') }}
+        @endif
 
         @if(Auth::user()->role == 'patient')
 
@@ -116,7 +125,16 @@ foreach ($data as $d){
                 <div class="col-md-4">
                     <br>
                     <div class="profile-work">
-                        <span class="glyphicon-envelope"> {{Auth::user()->email}}</span>
+                        <?php
+                        $dob = Auth::user()->dob;
+                        $date = new DateTime($dob);
+                        $now = new DateTime();
+                        $interval = $now->diff($date);
+                        ?>
+                        <span> {{Auth::user()->name}}</span><br>
+                        <span > {{Auth::user()->email}}</span><br>
+                        <span> {{$interval->y}}</span>
+
                     </div>
                 </div>
                 <div class="col-md-8">
@@ -999,22 +1017,24 @@ foreach ($data as $d){
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form action="#" method="post">
+                                                    <form action="{{route('sample')}}" method="post">
+                                                        {{csrf_field()}}
                                                         <label>Sample Number</label>
                                                         <div class="form-group">
-                                                            <input type="text" class="form-control" name="sname" required>
+                                                            <input type="text" class="form-control" name="sid" required>
                                                         </div>
                                                         <br>
                                                         <label>Transfer Date</label>
                                                         <div class="form-group">
-                                                            <input type="date" class="form-control" name="sname" required>
+                                                            <input type="date" class="form-control" name="sdate" required>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            <button type="submit" class="btn btn-primary">Save changes</button>
                                                         </div>
                                                     </form>
                                                 </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                    <button type="button" class="btn btn-primary">Save changes</button>
-                                                </div>
+
                                             </div>
                                         </div>
                                     </div>
