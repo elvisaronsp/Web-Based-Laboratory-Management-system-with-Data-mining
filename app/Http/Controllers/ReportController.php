@@ -26,10 +26,10 @@ class ReportController extends Controller
         $usere=$user->email;
 
         if($request->bsvalue>=120){
-            $data = array('name'=>"Sam Jose", "body" => "Test mail");
+            $data = array('name'=>"$user->name", "body" => "Test mail");
 
             Mail::send('email', $data, function($message) use($usere) {
-                $message->to($usere)
+                $message->to('wvd.51461@gmail.com')
                     ->subject('Regarding Your Lab Reports');
                 $message->from('akashsahan963@gmail.com','Mebi Lab');
             });
