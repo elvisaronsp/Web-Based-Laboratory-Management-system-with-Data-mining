@@ -449,7 +449,7 @@ foreach ($data as $d){
 
                         </div>
                         <div class="tab-pane fade" id="lft" role="tabpanel" aria-labelledby="home-tab">
-                            @foreach($lipidProfile as $lp)
+                            @foreach($lft as $lf)
                                 <div class="panel-body" style="border:solid; border-radius: 25px">
                                     <div class="row">
                                         <div class="col-md-6">
