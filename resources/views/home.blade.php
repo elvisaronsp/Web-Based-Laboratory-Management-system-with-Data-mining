@@ -509,28 +509,28 @@ foreach ($data as $d){
                                                                             </thead>
                                                                             <tbody>
                                                                             <tr>
-                                                                                <td>Serum Cholestrol</td>
-                                                                                <td>{{$lp->serum}}</td>
+                                                                                <td>Total Protein</td>
+                                                                                <td>{{$lf->totalProtein}}</td>
                                                                                 <td>mg/dl</td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <td>Triglycerides</td>
-                                                                                <td>{{$lp->trigly}}</td>
+                                                                                <td>Albumin</td>
+                                                                                <td>{{$lf->albumin}}</td>
                                                                                 <td>mg/dl</td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <td>HDL Cholestrol</td>
-                                                                                <td>{{$lp->hdl}}</td>
+                                                                                <td>Globulin</td>
+                                                                                <td>{{$lf->globulin}}</td>
                                                                                 <td>mg/dl</td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <td>VLDL Cholestrol</td>
-                                                                                <td>{{$lp->vldl}}</td>
+                                                                                <td>Alkaline</td>
+                                                                                <td>{{$lf->alkaline}}</td>
                                                                                 <td>mg/dl</td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <td>Cholestrol/HDL Ratio</td>
-                                                                                <td>{{$lp->cholestrol}}</td>
+                                                                                <td>Total Bilirubin</td>
+                                                                                <td>{{$lf->totalBilirubin}}</td>
                                                                                 <td>-</td>
                                                                             </tr>
                                                                             </tbody>
