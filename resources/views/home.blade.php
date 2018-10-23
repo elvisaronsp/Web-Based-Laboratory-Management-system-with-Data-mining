@@ -454,13 +454,13 @@ foreach ($data as $d){
                                     <div class="row">
                                         <div class="col-md-6">
 
-                                            <p>Your Lipid Profile report of the date {{$lp->created_at}}</p>
+                                            <p>Your Lipid Profile report of the date {{$lf->created_at}}</p>
 
                                         </div>
                                         <div class="col-md-6">
                                             <div class="row">
                                                 <div class="col-md-6">
-                                                    @if($lp->paymentStatus==0)
+                                                    @if($lf->paymentStatus==0)
                                                         <form action="{{route('reportPayment')}}" method="post">
                                                             {{csrf_field()}}
                                                             <input type="hidden" name="amount" value="1">
@@ -469,13 +469,13 @@ foreach ($data as $d){
                                                     @endif
                                                 </div>
                                                 <div class="col-md-6">
-                                                    @if($lp->paymentStatus==1)
-                                                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#lp{{$lp->id}}">
+                                                    @if($lf->paymentStatus==1)
+                                                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#lf{{$lf->id}}">
                                                             View Report
                                                         </button>
 
                                                         <!-- Modal -->
-                                                        <div class="modal fade" id="lp{{$lp->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal fade" id="lf{{$lf->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                             <div class="modal-dialog" role="document">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
