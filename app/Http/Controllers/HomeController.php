@@ -32,8 +32,9 @@ class HomeController extends Controller
         $fbc= DB::table('full_blood_counts')->where('userId',Auth::user()->id)->orderBy('id','desc')->get();
         $lft= DB::table('liver_functions')->where('userId',Auth::user()->id)->orderBy('id','desc')->get();
         $sm = DB::table('samples')->get();
+        $emp = DB::table('employees')->get();
 
-        return view('home',compact('user','lipidProfile','sugers','fbc','lft','sm'));
+        return view('home',compact('user','lipidProfile','sugers','fbc','lft','sm','emp'));
         //return view('home',(['user'=>$user,'sugers'=>$suger,'lipidProfile'=>$lipidProfile]));
     }
 

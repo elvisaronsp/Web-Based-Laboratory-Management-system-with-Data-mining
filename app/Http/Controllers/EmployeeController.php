@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Employee;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
 class EmployeeController extends Controller
@@ -35,5 +36,12 @@ class EmployeeController extends Controller
         $user->save();
         Session::put('em', 'employee Added Successfully');
         return back();
+    }
+
+    public function deleteEmployee(Request $request){
+        DB::table('employees')->where('id',$request->eid)->delete();
+        Session::put('emdel', 'employee Deleted Successfully');
+        return back();
+
     }
 }

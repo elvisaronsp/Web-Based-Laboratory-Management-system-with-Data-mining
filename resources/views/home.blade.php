@@ -61,6 +61,15 @@ foreach ($data as $d){
                 </div>
                 {{ Session::forget('em') }}
             @endif
+            @if(Session::has('emdel'))
+                <div class="alert alert-danger" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <strong>Employee Deleted Successfully</strong>
+                </div>
+                {{ Session::forget('emdel') }}
+            @endif
 
         @if(Auth::user()->role == 'patient')
 
@@ -1541,6 +1550,135 @@ foreach ($data as $d){
                                     </div>
 
                                 </div>
+                                @foreach($emp as $em)
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="panel panel-success">
+                                                <div style="text-align: center;font-size: 18px" class="panel-heading">Name {{$em->name}}  <br><label  class="label label-info">Position:{{$em->position}}</label></div>
+                                                <div class="panel-body">
+                                                    Email : {{$em->email}}<br>
+                                                    Gender : {{$em->gender}}<br>
+                                                    Date of birth :{{$em->dob}}<br>
+
+                                                </div>
+                                                <div class="panel-footer">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <form action="{{route('deleteEmployee')}}" method="post">
+                                                                {{ csrf_field() }}
+                                                                <input type="hidden" name="eid" value="{{$em->id}}">
+                                                                <input style="float: right" type="submit" class="btn btn-danger btn-xs" value="Delete">
+                                                            </form>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <button type="button" style="margin-left: 5px;float: left" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#emp{{$em->id}}">
+                                                                Update
+                                                            </button>
+
+                                                            <!-- Modal -->
+                                                            <div class="modal fade" id="emp{{$em->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                <div class="modal-dialog" role="document">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h1 style="text-align: center" class="modal-title" id="exampleModalLabel">Update Employee</h1>
+                                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                <span aria-hidden="true">&times;</span>
+                                                                            </button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <form class="form-horizontal" method="POST" action="{{ route('addEmployee') }}">
+                                                                                {{ csrf_field() }}
+
+                                                                                <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                                                                                    <label for="name" class="col-md-4 control-label">Name</label>
+
+                                                                                    <div class="col-md-6">
+                                                                                        <input id="name" type="text" class="form-control" name="name" value="{{ $em->name }}" required autofocus>
+
+
+                                                                                    </div>
+                                                                                </div>
+                                                                                <input type="hidden" name="eid" value="{{$em->id}}">
+
+                                                                                <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                                                                                    <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+
+                                                                                    <div class="col-md-6">
+                                                                                        <input id="email" type="email" class="form-control" name="email" value="{{$em->email }}" required>
+
+
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="form-group{{ $errors->has('gender') ? ' has-error' : '' }}">
+                                                                                    <label for="email" class="col-md-4 control-label">Gender</label>
+
+                                                                                    <div class="row">
+                                                                                        <div class="col-md-3">
+                                                                                            <label><input type="radio" name="gender" style="float: right" value="male" required>Male</label>
+                                                                                        </div>
+                                                                                        <div class="col-md-3">
+                                                                                            <label><input type="radio" name="gender" style="float: left" value="female" required>Female</label>
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                </div>
+
+                                                                                <div class="form-group{{ $errors->has('dob') ? ' has-error' : '' }}">
+                                                                                    <label for="email" class="col-md-4 control-label">Date of Birth</label>
+                                                                                    <div class="col-md-6">
+                                                                                        <input type="date" name="dob"  class="form-control" value="{{ $em->dob }}" required>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label for="email" class="col-md-4 control-label">Address</label>
+                                                                                    <div class="col-md-6">
+                                                                                        <input type="text" name="address"  class="form-control" value="{{ $em->address }}" required>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label for="email" class="col-md-4 control-label">Contact No</label>
+                                                                                    <div class="col-md-6">
+                                                                                        <input type="text" name="cno"  class="form-control" value="{{ $em->cno }}" required>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label for="email" class="col-md-4 control-label">Position</label>
+                                                                                    <div class="col-md-6">
+                                                                                        <input type="text" name="position"  class="form-control" value="{{ $em->position }}" required>
+                                                                                    </div>
+                                                                                </div>
+
+
+                                                                                <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                                                                                    <label for="password" class="col-md-4 control-label">Salary</label>
+
+                                                                                    <div class="col-md-6">
+                                                                                        <input id="password" type="number" class="form-control" name="salary" value="{{$em->salary}}" required>
+
+
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="modal-footer">
+                                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                                    <button type="submit" class="btn btn-primary">Update</button>
+                                                                                </div>
+                                                                            </form>
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                @endforeach
                                 {{--<canvas id="myChart" width="350" height="350"></canvas>--}}
                             </div>
 
