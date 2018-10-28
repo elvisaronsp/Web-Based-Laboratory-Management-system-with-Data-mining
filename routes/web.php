@@ -69,3 +69,8 @@ Route::post('deleteSample', [
     'uses' => 'SampleController@deleteSample',
     'as' => 'deleteSample'
 ]);
+
+Route::post('addPatient', [
+    'uses' => 'ReportController@addPatient',
+    'as' => 'addPatient'
+]);

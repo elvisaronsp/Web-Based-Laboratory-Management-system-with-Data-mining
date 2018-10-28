@@ -83,6 +83,17 @@ class ReportController extends Controller
 
     }
 
+    public function addPatient(Request $request){
+        $user = new User();
+        $user->name=$request->name;
+        $user->email=$request->email;
+        $user->password=bcrypt($request->password);
+        $user->gender=$request->gender;
+        $user->dob=$request->dob;
+        $user->save();
+        return back();
+    }
+
 
 }
 

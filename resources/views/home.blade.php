@@ -644,7 +644,7 @@ foreach ($data as $d){
                     <div class="col-md-8">
                         <div class="tab-content profile-tab" id="myTabContent">
                             <div class="tab-pane fade active in" id="report" role="tabpanel" aria-labelledby="home-tab">
-                                <input class="form-control" id="myInput" type="text" placeholder="Search..">
+                                <input style="margin-bottom: 15px;" class="form-control" id="myInput" type="text" placeholder="Search..">
                                 @foreach($user as $users)
                                     <ul class="list-group" id="myList">
                                         <li class="list-group-item">
@@ -688,9 +688,6 @@ foreach ($data as $d){
                                                     <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#lp{{$users->id}}">
                                                         + Lipid Profile
                                                     </button>
-                                                    <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#sc{{$users->id}}">
-                                                        + serum Creatanin
-                                                    </button>
                                                     <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#lf{{$users->id}}">
                                                         + Liver function Test
                                                     </button>
@@ -699,19 +696,46 @@ foreach ($data as $d){
                                                         <div class="modal-dialog" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                                    <h1 style="text-align: center" class="modal-title" id="exampleModalLabel">Full Blood Count</h1>
                                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                         <span aria-hidden="true">&times;</span>
                                                                     </button>
                                                                 </div>
                                                                 <div id="section-to-print" class="modal-body section-to-print">
-                                                                    hu dkla
+                                                                    <form action="{{route('fbc')}}" method="post">
+                                                                        {{csrf_field()}}
+                                                                        <label>Payment Status</label>
+                                                                        <select name="payment" class="form-control" required>
+                                                                            <option value="1">Paid</option>
+                                                                            <option value="2">Not Paid</option>
+                                                                        </select>
+                                                                        <br>
+                                                                        <input type="hidden" name='id' class="form-control" value="{{$users->id}}" required>
+                                                                        <label>Neutrophil</label>
+                                                                        <input type="number" name="neutrophil" step="0.01"class="form-control" required>
+                                                                        <br>
+                                                                        <label>Lymphocytes</label>
+                                                                        <input type="number" name="lymphocytes" step="0.01"  class="form-control" required>
+                                                                        <br>
+
+                                                                        <label>Monocytes</label>
+                                                                        <input type="number" name="monocytes" step="0.01" class="form-control" required>
+                                                                        <br>
+
+                                                                        <label>Hemoglobin</label>
+                                                                        <input type="number" name="hemoglobin" step="0.01" class="form-control" required>
+                                                                        <br>
+
+                                                                        <label>Red Blood Cells</label>
+                                                                        <input type="number" name="rbc" step="0.01" name="" class="form-control" required>
+                                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                        <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+
+                                                                    </form>
+
 
                                                                 </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                                    <button type="button" class="btn btn-primary" onclick="window.print();">Print</button>
-                                                                </div>
+
                                                             </div>
                                                         </div>
                                                     </div>
@@ -719,7 +743,7 @@ foreach ($data as $d){
                                                         <div class="modal-dialog" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                                    <h1 style="text-align: center" class="modal-title" id="exampleModalLabel">Fasting Blood Suger</h1>
                                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                         <span aria-hidden="true">&times;</span>
                                                                     </button>
@@ -750,7 +774,7 @@ foreach ($data as $d){
                                                         <div class="modal-dialog" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
-                                                                    <h1 style="text-align: center" class="modal-title" id="exampleModalLabel">Lipid Profile</h1>
+                                                                    <h1 style="text-align: center" class="modal-title" id="exampleModalLabel" >Lipid Profile</h1>
                                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                         <span aria-hidden="true">&times;</span>
                                                                     </button>
@@ -790,43 +814,51 @@ foreach ($data as $d){
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="modal fade" id="sc{{$users->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                        <div class="modal-dialog" role="document">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                        <span aria-hidden="true">&times;</span>
-                                                                    </button>
-                                                                </div>
-                                                                <div id="section-to-print" class="modal-body section-to-print">
-                                                                    hu dkla
 
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                                    <button type="button" class="btn btn-primary" onclick="window.print();">Print</button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
                                                     <div class="modal fade" id="lf{{$users->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                                    <h1 class="modal-title" id="exampleModalLabel" style="text-align: center">Liver Function Test</h1>
                                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                         <span aria-hidden="true">&times;</span>
                                                                     </button>
                                                                 </div>
                                                                 <div id="section-to-print" class="modal-body section-to-print">
-                                                                    hu dkla
+                                                                    <form action="{{route('liver')}}" method="post">
+                                                                        {{csrf_field()}}
+                                                                        <label>Payment Status</label>
+                                                                        <select name="payment" class="form-control" required>
+                                                                            <option value="1">Paid</option>
+                                                                            <option value="2">Not Paid</option>
+                                                                        </select>
+                                                                        <br>
+                                                                        <input type="hidden" name='id' class="form-control" value="{{$users->id}}" required>
+                                                                        <label>Total Protein g/L</label>
+                                                                        <input type="number" name="totalProtein" step="0.01"class="form-control" required>
+                                                                        <br>
+                                                                        <label>Albumin g/L</label>
+                                                                        <input type="number" name="albumin" step="0.01"  class="form-control" required>
+                                                                        <br>
+
+                                                                        <label>Globulin g/L</label>
+                                                                        <input type="number" name="globulin" step="0.01" class="form-control" required>
+                                                                        <br>
+
+                                                                        <label>Alkaline phosphatase U/L</label>
+                                                                        <input type="number" name="alkaline" step="0.01" class="form-control" required>
+                                                                        <br>
+
+                                                                        <label>Total Bilirubin mol/L</label>
+                                                                        <input type="number" name="totalBilirubin" step="0.01" name="" class="form-control" required>
+                                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                        <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+
+                                                                    </form>
+
 
                                                                 </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                                    <button type="button" class="btn btn-primary" onclick="window.print();">Print</button>
-                                                                </div>
+
                                                             </div>
                                                         </div>
                                                     </div>
@@ -903,7 +935,7 @@ foreach ($data as $d){
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-8">
                         <div class="profile-head">
                             <h5>
                                 {{Auth::user()->name}}
@@ -941,8 +973,102 @@ foreach ($data as $d){
                     </div>
                     <div class="col-md-8">
                         <div class="tab-content profile-tab" id="myTabContent">
+                            <!-- Button trigger modal -->
                             <div class="tab-pane fade active in" id="report" role="tabpanel" aria-labelledby="home-tab">
-                                <input class="form-control" id="myInput" type="text" placeholder="Search..">
+                                <button type="button" style="margin-bottom: 10px;" class="btn btn-primary" data-toggle="modal" data-target="#addPa">
+                                    Add Patient
+                                </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="addPa" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Add Patient</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form class="form-horizontal" method="POST" action="{{ route('addPatient') }}">
+                                                    {{ csrf_field() }}
+
+                                                    <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                                                        <label for="name" class="col-md-4 control-label">Name</label>
+
+                                                        <div class="col-md-6">
+                                                            <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+
+                                                            @if ($errors->has('name'))
+                                                                <span class="help-block">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                                                        <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+
+                                                        <div class="col-md-6">
+                                                            <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+
+                                                            @if ($errors->has('email'))
+                                                                <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group{{ $errors->has('gender') ? ' has-error' : '' }}">
+                                                        <label for="email" class="col-md-4 control-label">Gender</label>
+
+                                                        <div class="row">
+                                                            <div class="col-md-3">
+                                                                <label><input type="radio" name="gender" style="float: right" value="male" checked required>Male</label>
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                                <label><input type="radio" name="gender" style="float: left" value="female" required>Female</label>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div class="form-group{{ $errors->has('dob') ? ' has-error' : '' }}">
+                                                        <label for="email" class="col-md-4 control-label">Date of Birth</label>
+                                                        <div class="col-md-6">
+                                                            <input type="date" name="dob"  class="form-control" value="{{ old('dob') }}" required>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                                                        <label for="password" class="col-md-4 control-label">Password</label>
+
+                                                        <div class="col-md-6">
+                                                            <input id="password" type="password" class="form-control" name="password" required>
+
+                                                            @if ($errors->has('password'))
+                                                                <span class="help-block">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <input class="form-control" style="margin-bottom: 10px;" id="myInput" type="text" placeholder="Search..">
                                 @foreach($user as $users)
                                     <ul class="list-group" id="myList">
                                         <li class="list-group-item">
@@ -1036,10 +1162,7 @@ foreach ($data as $d){
 
 
                                                                             </div>
-                                                                            <div class="modal-footer">
-                                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                                                <button type="button" class="btn btn-primary" onclick="window.print();">Print</button>
-                                                                            </div>
+
                                                                         </div>
                                                                     </div>
                                                                 </div>
