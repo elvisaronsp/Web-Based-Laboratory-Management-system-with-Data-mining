@@ -74,3 +74,13 @@ Route::post('addPatient', [
     'uses' => 'ReportController@addPatient',
     'as' => 'addPatient'
 ]);
+
+Route::post('addMLT', [
+    'uses' => 'EmployeeController@addMLT',
+    'as' => 'addMLT'
+]);
+
+Route::post('addEmployee', [
+    'uses' => 'EmployeeController@addEmployee',
+    'as' => 'addEmployee'
+]);

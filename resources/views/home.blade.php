@@ -43,6 +43,24 @@ foreach ($data as $d){
             </div>
             {{ Session::forget('sampleadd') }}
         @endif
+            @if(Session::has('mlt'))
+                <div class="alert alert-success" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <strong>MLT Added Successfully</strong>
+                </div>
+                {{ Session::forget('mlt') }}
+            @endif
+            @if(Session::has('em'))
+                <div class="alert alert-success" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <strong>Employee Added Successfully</strong>
+                </div>
+                {{ Session::forget('em') }}
+            @endif
 
         @if(Auth::user()->role == 'patient')
 
@@ -1318,7 +1336,210 @@ foreach ($data as $d){
                             </div>
                             <div class="tab-pane fade" id="employee" role="tabpanel" aria-labelledby="profile-tab">
                                 <div class="row">
-                                Add members
+                                    <button type="button" style="margin-bottom: 10px;" class="btn btn-primary" data-toggle="modal" data-target="#addml">
+                                        Add MLT
+                                    </button>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="addml" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Add MLT</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form class="form-horizontal" method="POST" action="{{ route('addMLT') }}">
+                                                        {{ csrf_field() }}
+
+                                                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                                                            <label for="name" class="col-md-4 control-label">Name</label>
+
+                                                            <div class="col-md-6">
+                                                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+
+                                                                @if ($errors->has('name'))
+                                                                    <span class="help-block">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                                                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+
+                                                            <div class="col-md-6">
+                                                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+
+                                                                @if ($errors->has('email'))
+                                                                    <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group{{ $errors->has('gender') ? ' has-error' : '' }}">
+                                                            <label for="email" class="col-md-4 control-label">Gender</label>
+
+                                                            <div class="row">
+                                                                <div class="col-md-3">
+                                                                    <label><input type="radio" name="gender" style="float: right" value="male" checked required>Male</label>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <label><input type="radio" name="gender" style="float: left" value="female" required>Female</label>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+
+                                                        <div class="form-group{{ $errors->has('dob') ? ' has-error' : '' }}">
+                                                            <label for="email" class="col-md-4 control-label">Date of Birth</label>
+                                                            <div class="col-md-6">
+                                                                <input type="date" name="dob"  class="form-control" value="{{ old('dob') }}" required>
+                                                            </div>
+                                                        </div>
+
+
+                                                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                                                            <label for="password" class="col-md-4 control-label">Password</label>
+
+                                                            <div class="col-md-6">
+                                                                <input id="password" type="password" class="form-control" name="password" required>
+
+                                                                @if ($errors->has('password'))
+                                                                    <span class="help-block">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            <button type="submit" class="btn btn-primary">Save changes</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <button type="button" style="margin-bottom: 10px;" class="btn btn-primary" data-toggle="modal" data-target="#addemp">
+                                        Add Employee
+                                    </button>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="addemp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Add MLT</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form class="form-horizontal" method="POST" action="{{ route('addEmployee') }}">
+                                                        {{ csrf_field() }}
+
+                                                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                                                            <label for="name" class="col-md-4 control-label">Name</label>
+
+                                                            <div class="col-md-6">
+                                                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+
+                                                                @if ($errors->has('name'))
+                                                                    <span class="help-block">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                                                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+
+                                                            <div class="col-md-6">
+                                                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+
+                                                                @if ($errors->has('email'))
+                                                                    <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group{{ $errors->has('gender') ? ' has-error' : '' }}">
+                                                            <label for="email" class="col-md-4 control-label">Gender</label>
+
+                                                            <div class="row">
+                                                                <div class="col-md-3">
+                                                                    <label><input type="radio" name="gender" style="float: right" value="male" checked required>Male</label>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <label><input type="radio" name="gender" style="float: left" value="female" required>Female</label>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+
+                                                        <div class="form-group{{ $errors->has('dob') ? ' has-error' : '' }}">
+                                                            <label for="email" class="col-md-4 control-label">Date of Birth</label>
+                                                            <div class="col-md-6">
+                                                                <input type="date" name="dob"  class="form-control" value="{{ old('dob') }}" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="email" class="col-md-4 control-label">Address</label>
+                                                            <div class="col-md-6">
+                                                                <input type="text" name="address"  class="form-control" value="{{ old('dob') }}" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="email" class="col-md-4 control-label">Contact No</label>
+                                                            <div class="col-md-6">
+                                                                <input type="text" name="cno"  class="form-control" value="{{ old('dob') }}" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="email" class="col-md-4 control-label">Position</label>
+                                                            <div class="col-md-6">
+                                                                <input type="text" name="position"  class="form-control" value="{{ old('dob') }}" required>
+                                                            </div>
+                                                        </div>
+
+
+                                                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                                                            <label for="password" class="col-md-4 control-label">Salary</label>
+
+                                                            <div class="col-md-6">
+                                                                <input id="password" type="number" class="form-control" name="salary" required>
+
+                                                                @if ($errors->has('password'))
+                                                                    <span class="help-block">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            <button type="submit" class="btn btn-primary">Save changes</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>
                                 {{--<canvas id="myChart" width="350" height="350"></canvas>--}}
                             </div>
