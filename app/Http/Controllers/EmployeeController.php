@@ -44,4 +44,21 @@ class EmployeeController extends Controller
         return back();
 
     }
+
+    public function updateEmployee(Request $request){
+        DB::table('employees')
+            ->where('id', $request->eid)
+            ->update([
+                'name' =>$request->name,
+                'email' =>$request->email,
+                'salary'=>$request->salary,
+                'gender'=>$request->gender,
+                'dob'=>$request->dob,
+                'position'=>$request->position,
+                'cno'=>$request->cno,
+                'address'=>$request->address
+                ]);
+        Session::put('emup', 'employee Updated Successfully');
+        return back();
+    }
 }

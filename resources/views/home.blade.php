@@ -52,6 +52,24 @@ foreach ($data as $d){
                 </div>
                 {{ Session::forget('mlt') }}
             @endif
+            @if(Session::has('rpa'))
+                <div class="alert alert-success" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <strong>Report Added Successfully</strong>
+                </div>
+                {{ Session::forget('rpa') }}
+            @endif
+            @if(Session::has('pa'))
+                <div class="alert alert-success" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <strong>Patient Added Successfully</strong>
+                </div>
+                {{ Session::forget('pa') }}
+            @endif
             @if(Session::has('em'))
                 <div class="alert alert-success" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -69,6 +87,15 @@ foreach ($data as $d){
                     <strong>Employee Deleted Successfully</strong>
                 </div>
                 {{ Session::forget('emdel') }}
+            @endif
+            @if(Session::has('emup'))
+                <div class="alert alert-warning" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <strong>Employee Updated Successfully</strong>
+                </div>
+                {{ Session::forget('emup') }}
             @endif
 
         @if(Auth::user()->role == 'patient')
@@ -1150,7 +1177,7 @@ foreach ($data as $d){
                                                                     <div class="modal-dialog" role="document">
                                                                         <div class="modal-content">
                                                                             <div class="modal-header">
-                                                                                <h5 class="modal-title" id="exampleModalLabel">Full Blood Count</h5>
+                                                                                <h1 style="text-align: center" class="modal-title" id="exampleModalLabel">Full Blood Count</h1>
                                                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                                     <span aria-hidden="true">&times;</span>
                                                                                 </button>
@@ -1197,7 +1224,7 @@ foreach ($data as $d){
                                                                     <div class="modal-dialog" role="document">
                                                                         <div class="modal-content">
                                                                             <div class="modal-header">
-                                                                                <h5 class="modal-title" id="exampleModalLabel">Fasting Blood Suger</h5>
+                                                                                <h1 style="text-align: center" class="modal-title" id="exampleModalLabel">Fasting Blood Suger</h1>
                                                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                                     <span aria-hidden="true">&times;</span>
                                                                                 </button>
@@ -1276,7 +1303,7 @@ foreach ($data as $d){
                                                                     <div class="modal-dialog" role="document">
                                                                         <div class="modal-content">
                                                                             <div class="modal-header">
-                                                                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                                                <h1 style="text-align: center" class="modal-title" id="exampleModalLabel">Liver Function</h1>
                                                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                                     <span aria-hidden="true">&times;</span>
                                                                                 </button>
@@ -1586,7 +1613,7 @@ foreach ($data as $d){
                                                                             </button>
                                                                         </div>
                                                                         <div class="modal-body">
-                                                                            <form class="form-horizontal" method="POST" action="{{ route('addEmployee') }}">
+                                                                            <form class="form-horizontal" method="POST" action="{{ route('updateEmployee') }}">
                                                                                 {{ csrf_field() }}
 
                                                                                 <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">

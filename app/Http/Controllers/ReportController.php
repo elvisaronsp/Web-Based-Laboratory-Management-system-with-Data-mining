@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 
 
 class ReportController extends Controller
@@ -25,19 +26,64 @@ class ReportController extends Controller
         $user=DB::table('users')->where('id',$request->id)->first();
         $usere=$user->email;
 
-        if($request->bsvalue>=120){
+        if($request->bsvalue>=120 or $request->bsvalue<=85){
             $data = array('name'=>"$user->name", "body" => "Test mail");
 
             Mail::send('email', $data, function($message) use($usere) {
-                $message->to('wvd.51461@gmail.com')
+                $message->to($usere)
                     ->subject('Regarding Your Lab Reports');
                 $message->from('akashsahan963@gmail.com','Mebi Lab');
             });
+        }else{
+            $last = BloodSuger::where('userId',$request->id)->orderBy('id', 'desc')->take(5)->get();
+            $c=DB::table('blood_sugers')->where('userId',$request->id)->count();
+            $count = 0;
+            $value = array();
+
+            if($c>=5){
+
+
+                foreach ($last as $l){
+
+                    array_push($value,$l->bloodSuger);
+                }
+
+                for($i=0;$i<4;$i++){
+
+                    if($value[$i]-$value[$i+1]>4){
+
+                        $count++;
+                    }
+                }
+
+
+                if($count==4){
+                    $data = array('name'=>"$user->name", "body" => "Test mail");
+
+                    Mail::send('email', $data, function($message) use($usere) {
+                        $message->to($usere)
+                            ->subject('Regarding Your Lab Reports');
+                        $message->from('akashsahan963@gmail.com','Mebi Lab');
+                    });
+                }else{
+                    if($value[0]-$value[4]>=15 or $value[4]-$value[0]>15){
+                        $data = array('name'=>"$user->name", "body" => "Test mail");
+
+                        Mail::send('email', $data, function($message) use($usere) {
+                            $message->to($usere)
+                                ->subject('Regarding Your Lab Reports');
+                            $message->from('akashsahan963@gmail.com','Mebi Lab');
+                        });
+                    }
+
+
+                }
+            }
         }
 
 
 
-
+        Session::put('rpa', 'Report Updated Successfully');
         return back();
     }
 
@@ -51,6 +97,7 @@ class ReportController extends Controller
         $lp->trigly=$request->trigly;
         $lp->cholestrol=$request->cholestrol;
         $lp->save();
+        Session::put('rpa', 'Report Updated Successfully');
         return back();
 
     }
@@ -65,6 +112,7 @@ class ReportController extends Controller
         $fbc->hemoglobin=$request->hemoglobin;
         $fbc->rbc=$request->rbc;
         $fbc->save();
+        Session::put('rpa', 'employee Updated Successfully');
         return back();
 
     }
@@ -79,6 +127,7 @@ class ReportController extends Controller
         $lf->alkaline=$request->alkaline;
         $lf->totalBilirubin=$request->totalBilirubin;
         $lf->save();
+        Session::put('rpa', 'employee Updated Successfully');
         return back();
 
     }
@@ -91,6 +140,7 @@ class ReportController extends Controller
         $user->gender=$request->gender;
         $user->dob=$request->dob;
         $user->save();
+        Session::put('pa', 'Patient Updated Successfully');
         return back();
     }
 

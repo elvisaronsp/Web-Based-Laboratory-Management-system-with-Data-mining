@@ -89,3 +89,8 @@ Route::post('deleteEmployee', [
     'uses' => 'EmployeeController@deleteEmployee',
     'as' => 'deleteEmployee'
 ]);
+
+Route::post('updateEmployee', [
+    'uses' => 'EmployeeController@updateEmployee',
+    'as' => 'updateEmployee'
+]);
