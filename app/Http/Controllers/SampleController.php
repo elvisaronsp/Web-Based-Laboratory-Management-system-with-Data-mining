@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Sample;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
 class SampleController extends Controller
@@ -16,4 +17,10 @@ class SampleController extends Controller
         Session::put('sampleadd', 'Sample Added Successfully');
         return back();
     }
+
+    public function deleteSample(Request $request){
+        DB::table('samples')->where('id',$request->sid)->delete();
+        return back();
+    }
 }
+

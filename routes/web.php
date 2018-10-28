@@ -64,3 +64,8 @@ Route::post('sample', [
     'uses' => 'SampleController@addSample',
     'as' => 'sample'
 ]);
+//route to delete sample tranfer
+Route::post('deleteSample', [
+    'uses' => 'SampleController@deleteSample',
+    'as' => 'deleteSample'
+]);

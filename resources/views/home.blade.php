@@ -492,7 +492,7 @@ foreach ($data as $d){
                                                                         $interval = $now->diff($date);
                                                                         ?>
                                                                         <h3 style="text-align: center" class="text-primary">Medi Lab</h3>
-                                                                        <h5 style="text-align: center" >Lipid Profile</h5>
+                                                                        <h5 style="text-align: center" >Liver Function Test</h5>
                                                                         <h4 style="text-align:center ;">contact us 0717843564</h4>
 
                                                                         Name   : {{Auth::user()->name}}<br>
@@ -986,9 +986,9 @@ foreach ($data as $d){
                                                                 <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#lp{{$users->id}}">
                                                                     + Lipid Profile
                                                                 </button>
-                                                                <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#sc{{$users->id}}">
-                                                                    + serum Creatanin
-                                                                </button>
+                                                                {{--<button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#sc{{$users->id}}">--}}
+                                                                    {{--+ serum Creatanin--}}
+                                                                {{--</button>--}}
                                                                 <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#lf{{$users->id}}">
                                                                     + Liver function Test
                                                                 </button>
@@ -1121,26 +1121,7 @@ foreach ($data as $d){
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="modal fade" id="sc{{$users->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                                    <div class="modal-dialog" role="document">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                                    <span aria-hidden="true">&times;</span>
-                                                                                </button>
-                                                                            </div>
-                                                                            <div id="section-to-print" class="modal-body section-to-print">
-                                                                                hu dkla
 
-                                                                            </div>
-                                                                            <div class="modal-footer">
-                                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                                                <button type="button" class="btn btn-primary" onclick="window.print();">Print</button>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
                                                                 <div class="modal fade" id="lf{{$users->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                                     <div class="modal-dialog" role="document">
                                                                         <div class="modal-content">
@@ -1223,9 +1204,23 @@ foreach ($data as $d){
                             <div class="tab-pane fade" id="sample" role="tabpanel" aria-labelledby="profile-tab">
                                 <div class="row">
                                     <!-- Button trigger modal -->
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+
+                                    <button type="button" style="margin-bottom: 10px;" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                                         Sample Handling
-                                    </button>
+                                    </button> <br>
+
+                                    @foreach($sm as $s)
+                                        <div class="panel-body" style="border: solid;margin-bottom: 5px">
+                                            <p style="font-size: 18px"><label class="label label-primary">Sample ID  {{$s->sampleId}}</label>  <label class="label label-warning"> Date : {{$s->date}}</label></p>
+                                            <form action="{{route('deleteSample')}}" method="post">
+                                                {{csrf_field()}}
+                                                <input type="hidden" name="sid"  value="{{$s->id}}">
+                                                <input type="submit" value="Delete" class="btn btn-danger btn-xs">
+                                            </form>
+
+                                        </div>
+
+                                    @endforeach
 
                                     <!-- Modal -->
                                     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
