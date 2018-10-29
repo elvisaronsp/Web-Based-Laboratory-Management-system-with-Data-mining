@@ -57,6 +57,15 @@ Route::post('delfbc', [
     'uses' => 'ReportController@delfbc',
     'as' => 'delfbc'
 ]);
+Route::post('delbs', [
+    'uses' => 'ReportController@delbs',
+    'as' => 'delbs'
+]);
+Route::post('delserum', [
+    'uses' => 'ReportController@delserum',
+    'as' => 'delserum'
+]);
+
 
 
 //route to add Liver Function

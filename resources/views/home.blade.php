@@ -1504,6 +1504,9 @@ foreach ($data as $d){
                             <div class="tab-pane fade" id="viewReport" role="tabpanel" aria-labelledby="profile-tab">
                                 <?php
                                 $fbcad = DB::table('full_blood_counts')->leftjoin('users','users.id','full_blood_counts.userId')->select(['users.name','users.email','users.dob','users.gender','full_blood_counts.*'])->orderBy('full_blood_counts.id', 'DESC')->get();
+                                $bsadmin = DB::table('blood_sugers')->leftjoin('users','users.id','blood_sugers.userId')->select(['users.name','users.email','users.dob','users.gender','blood_sugers.*'])->orderBy('blood_sugers.id', 'DESC')->get();
+                                $slpadmin = DB::table('serums')->leftjoin('users','users.id','serums.userId')->select(['users.name','users.email','users.dob','users.gender','serums.*'])->orderBy('serums.id', 'DESC')->get();
+                                $lfadmin = DB::table('liver_functions')->leftjoin('users','users.id','liver_functions.userId')->select(['users.name','users.email','users.dob','users.gender','liver_functions.*'])->orderBy('liver_functions.id', 'DESC')->get();
 
                                 ?>
 
@@ -1619,18 +1622,275 @@ foreach ($data as $d){
                                 </div>
 
                                 <h1 style="text-align: center">Blood Suger</h1>
-                                <div class="row" style="height: 400px;overflow-y: scroll">
+                                <div class="row" style="height: 500px;overflow-y: scroll">
+                                    @foreach($bsadmin as $bsad)
+                                        <div class="panel-body" style="border: solid;border-radius: 25px;margin-bottom: 5px">
+                                            <div class="row">
+                                                <div class="col-md-1">
+                                                    <img class="img-circle" src="{{asset('img/'.$bsad->userId)}}" style="width: 60px;height: 60px;">
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <p>Created : {{$bsad->created_at}}</p>
+                                                    <p>Name : {{$bsad->name}}</p>
+                                                    <p>Email : {{$bsad->email}}</p>
+                                                    <p>
+                                                        @if($bsad->paymentStatus==1)
+                                                            <label class="label label-success" style="font-size: 18px">Paid</label>
+                                                        @else
+                                                            <label class="label label-danger" style="font-size: 18px">Paid</label>
+                                                        @endif
+                                                    </p>
+                                                    <p style="text-align: center">
+                                                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#bsadminview{{$bsad->id}}">
+                                                            View Report
+                                                        </button>
+
+                                                        <!-- Modal -->
+                                                    <div class="modal fade" id="bsadminview{{$bsad->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Blood Suger Test</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div id="section-to-print" class="modal-body section-to-print">
+                                                                    <?php
+                                                                    $dob = $bsad->dob;
+                                                                    $date = new DateTime($dob);
+                                                                    $now = new DateTime();
+                                                                    $interval = $now->diff($date);
+                                                                    ?>
+                                                                    <h3 style="text-align: center" class="text-primary">Medi Lab</h3>
+                                                                    <h5 style="text-align: center">Blood Suger List</h5>
+                                                                    <h4 style="text-align:center ;">contact us 0717843564</h4>
+
+                                                                    Name   : {{$bsad->name}}<br>
+                                                                    Age    : {{$interval->y}}<br>
+                                                                    Gender : {{$bsad->gender}}
+                                                                    <table class="table borderless">
+                                                                        <thead>
+                                                                        <tr>
+                                                                            <th>Test</th>
+                                                                            <th>Result</th>
+                                                                            <th>units</th>
+                                                                        </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                        <tr>
+                                                                            <td>Blood Suger</td>
+                                                                            <td>{{$bsad->bloodSuger}}</td>
+                                                                            <td>mg/dl</td>
+                                                                        </tr>
+                                                                        </tbody>
+                                                                    </table>
+
+
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                    <button type="button" class="btn btn-primary" onclick="window.print();">Print</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                    </p>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <form action="{{route('delbs')}}" method="post">
+                                                        {{csrf_field()}}
+                                                        <input type="hidden" name="id" value="{{$bsad->id}}">
+                                                        <input type="submit" value="delete" class="btn btn-danger btn-xs">
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
 
                                 </div>
 
                                 <h1 style="text-align: center">Serum Lipid Profile</h1>
                                 <div class="row" style="height: 400px;overflow-y: scroll">
+                                    @foreach($slpadmin as $slpad)
+                                        <div class="panel-body" style="border: solid;border-radius: 25px;margin-bottom: 5px">
+                                            <div class="row">
+                                                <div class="col-md-1">
+                                                    <img class="img-circle" src="{{asset('img/'.$slpad->userId)}}" style="width: 60px;height: 60px;">
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <p>Created : {{$slpad->created_at}}</p>
+                                                    <p>Name : {{$slpad->name}}</p>
+                                                    <p>Email : {{$slpad->email}}</p>
+                                                    <p>
+                                                        @if($slpad->paymentStatus==1)
+                                                            <label class="label label-success" style="font-size: 18px">Paid</label>
+                                                        @else
+                                                            <label class="label label-danger" style="font-size: 18px">Paid</label>
+                                                        @endif
+                                                    </p>
+                                                    <p style="text-align: center">
+                                                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#serumdminview{{$slpad->id}}">
+                                                            View Report
+                                                        </button>
+
+                                                        <!-- Modal -->
+                                                    <div class="modal fade" id="serumdminview{{$slpad->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h1 style="text-align: center" class="modal-title" id="exampleModalLabel">Serum Lipid Profile</h1>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div id="section-to-print" class="modal-body section-to-print">
+                                                                    <?php
+                                                                    $dob = $slpad->dob;
+                                                                    $date = new DateTime($dob);
+                                                                    $now = new DateTime();
+                                                                    $interval = $now->diff($date);
+                                                                    ?>
+                                                                    <h3 style="text-align: center" class="text-primary">Medi Lab</h3>
+                                                                    <h5 style="text-align: center">Serum Lipid Profile</h5>
+                                                                    <h4 style="text-align:center ;">contact us 0717843564</h4>
+
+                                                                    Name   : {{$slpad->name}}<br>
+                                                                    Age    : {{$interval->y}}<br>
+                                                                    Gender : {{$slpad->gender}}
+                                                                    <table class="table borderless">
+                                                                        <thead>
+                                                                        <tr>
+                                                                            <th>Test</th>
+                                                                            <th>Result</th>
+                                                                            <th>units</th>
+                                                                        </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                        <tr>
+                                                                            <td>Serum Creatinine</td>
+                                                                            <td>{{$slpad->serum}}</td>
+                                                                            <td>mg/dl</td>
+                                                                        </tr>
+                                                                        </tbody>
+                                                                    </table>
+
+
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                    <button type="button" class="btn btn-primary" onclick="window.print();">Print</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                    </p>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <form action="{{route('delserum')}}" method="post">
+                                                        {{csrf_field()}}
+                                                        <input type="hidden" name="id" value="{{$slpad->id}}">
+                                                        <input type="submit" value="delete" class="btn btn-danger btn-xs">
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
 
                                 </div>
 
                                 <h1 style="text-align: center">Lipid Profile</h1>
                                 <div class="row" style="height: 400px;overflow-y: scroll">
+                                    {{--@foreach($slpadmin as $slpad)--}}
+                                        {{--<div class="panel-body" style="border: solid;border-radius: 25px;margin-bottom: 5px">--}}
+                                            {{--<div class="row">--}}
+                                                {{--<div class="col-md-1">--}}
+                                                    {{--<img class="img-circle" src="{{asset('img/'.$slpad->userId)}}" style="width: 60px;height: 60px;">--}}
+                                                {{--</div>--}}
+                                                {{--<div class="col-md-9">--}}
+                                                    {{--<p>Created : {{$slpad->created_at}}</p>--}}
+                                                    {{--<p>Name : {{$slpad->name}}</p>--}}
+                                                    {{--<p>Email : {{$slpad->email}}</p>--}}
+                                                    {{--<p>--}}
+                                                        {{--@if($slpad->paymentStatus==1)--}}
+                                                            {{--<label class="label label-success" style="font-size: 18px">Paid</label>--}}
+                                                        {{--@else--}}
+                                                            {{--<label class="label label-danger" style="font-size: 18px">Paid</label>--}}
+                                                        {{--@endif--}}
+                                                    {{--</p>--}}
+                                                    {{--<p style="text-align: center">--}}
+                                                        {{--<button type="button" class="btn btn-success" data-toggle="modal" data-target="#serumdminview{{$slpad->id}}">--}}
+                                                            {{--View Report--}}
+                                                        {{--</button>--}}
 
+                                                        {{--<!-- Modal -->--}}
+                                                    {{--<div class="modal fade" id="serumdminview{{$slpad->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">--}}
+                                                        {{--<div class="modal-dialog" role="document">--}}
+                                                            {{--<div class="modal-content">--}}
+                                                                {{--<div class="modal-header">--}}
+                                                                    {{--<h1 style="text-align: center" class="modal-title" id="exampleModalLabel">Serum Lipid Profile</h1>--}}
+                                                                    {{--<button type="button" class="close" data-dismiss="modal" aria-label="Close">--}}
+                                                                        {{--<span aria-hidden="true">&times;</span>--}}
+                                                                    {{--</button>--}}
+                                                                {{--</div>--}}
+                                                                {{--<div id="section-to-print" class="modal-body section-to-print">--}}
+                                                                    {{--<?php--}}
+                                                                    {{--$dob = $slpad->dob;--}}
+                                                                    {{--$date = new DateTime($dob);--}}
+                                                                    {{--$now = new DateTime();--}}
+                                                                    {{--$interval = $now->diff($date);--}}
+                                                                    {{--?>--}}
+                                                                    {{--<h3 style="text-align: center" class="text-primary">Medi Lab</h3>--}}
+                                                                    {{--<h5 style="text-align: center">Serum Lipid Profile</h5>--}}
+                                                                    {{--<h4 style="text-align:center ;">contact us 0717843564</h4>--}}
+
+                                                                    {{--Name   : {{$slpad->name}}<br>--}}
+                                                                    {{--Age    : {{$interval->y}}<br>--}}
+                                                                    {{--Gender : {{$slpad->gender}}--}}
+                                                                    {{--<table class="table borderless">--}}
+                                                                        {{--<thead>--}}
+                                                                        {{--<tr>--}}
+                                                                            {{--<th>Test</th>--}}
+                                                                            {{--<th>Result</th>--}}
+                                                                            {{--<th>units</th>--}}
+                                                                        {{--</tr>--}}
+                                                                        {{--</thead>--}}
+                                                                        {{--<tbody>--}}
+                                                                        {{--<tr>--}}
+                                                                            {{--<td>Serum Creatinine</td>--}}
+                                                                            {{--<td>{{$slpad->serum}}</td>--}}
+                                                                            {{--<td>mg/dl</td>--}}
+                                                                        {{--</tr>--}}
+                                                                        {{--</tbody>--}}
+                                                                    {{--</table>--}}
+
+
+                                                                {{--</div>--}}
+                                                                {{--<div class="modal-footer">--}}
+                                                                    {{--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>--}}
+                                                                    {{--<button type="button" class="btn btn-primary" onclick="window.print();">Print</button>--}}
+                                                                {{--</div>--}}
+                                                            {{--</div>--}}
+                                                        {{--</div>--}}
+                                                    {{--</div>--}}
+
+
+                                                    {{--</p>--}}
+                                                {{--</div>--}}
+                                                {{--<div class="col-md-2">--}}
+                                                    {{--<form action="{{route('delserum')}}" method="post">--}}
+                                                        {{--{{csrf_field()}}--}}
+                                                        {{--<input type="hidden" name="id" value="{{$slpad->id}}">--}}
+                                                        {{--<input type="submit" value="delete" class="btn btn-danger btn-xs">--}}
+                                                    {{--</form>--}}
+                                                {{--</div>--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
+                                    {{--@endforeach--}}
                                 </div>
 
                                 <h1 style="text-align: center">Liver Function Test</h1>

@@ -169,7 +169,21 @@ class ReportController extends Controller
 
     public function delfbc(Request $request){
         DB::table('full_blood_counts')->where('id',$request->id)->delete();
-        Session::put('delr', 'Patient Updated Successfully');
+        Session::put('delr', 'report Delete Successfully');
+        return back();
+
+
+    }
+    public function delbs(Request $request){
+        DB::table('blood_sugers')->where('id',$request->id)->delete();
+        Session::put('delr', 'report delete Successfully');
+        return back();
+
+
+    }
+    public function delserum(Request $request){
+        DB::table('serums')->where('id',$request->id)->delete();
+        Session::put('delr', 'report delete Successfully');
         return back();
 
 
