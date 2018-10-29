@@ -43,6 +43,15 @@ foreach ($data as $d){
    <!------ Include the above in your HEAD tag ---------->
 
     <div class="container emp-profile">
+        @if(Session::has('delr'))
+            <div class="alert alert-danger" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <strong>Report Deleted Successfully</strong>
+            </div>
+            {{ Session::forget('delr') }}
+        @endif
         @if(Session::has('sampleadd'))
             <div class="alert alert-success" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -1493,8 +1502,118 @@ foreach ($data as $d){
 
                             </div>
                             <div class="tab-pane fade" id="viewReport" role="tabpanel" aria-labelledby="profile-tab">
+                                <?php
+                                $fbcad = DB::table('full_blood_counts')->leftjoin('users','users.id','full_blood_counts.userId')->select(['users.name','users.email','users.dob','users.gender','full_blood_counts.*'])->orderBy('full_blood_counts.id', 'DESC')->get();
+
+                                ?>
+
                                 <h1 style="text-align: center">Full Blood Count</h1>
-                                <div class="row" style="height: 400px;overflow-y: scroll">
+                                <div class="row" style="height: 500px;overflow-y: scroll">
+                                    @foreach($fbcad as $fad)
+                                    <div class="panel-body" style="border: solid;border-radius: 25px;margin-bottom: 5px">
+                                        <div class="row">
+                                            <div class="col-md-1">
+                                                <img class="img-circle" src="{{asset('img/'.$fad->userId)}}" style="width: 60px;height: 60px;">
+                                            </div>
+                                            <div class="col-md-9">
+                                                <p>Created : {{$fad->created_at}}</p>
+                                                <p>Name : {{$fad->name}}</p>
+                                                <p>Email : {{$fad->email}}</p>
+                                                <p>
+                                                    @if($fad->paymentStatus==1)
+                                                        <label class="label label-success" style="font-size: 18px">Paid</label>
+                                                    @else
+                                                        <label class="label label-danger" style="font-size: 18px">Paid</label>
+                                                    @endif
+                                                </p>
+                                                <p style="text-align: center">
+                                                    <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#fbcad{{$fad->id}}">
+                                                        View Report
+                                                    </button>
+
+                                                    <!-- Modal -->
+                                                <div class="modal fade" id="fbcad{{$fad->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">Full Blood Count</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div id="section-to-print" class="modal-body section-to-print">
+                                                                <?php
+                                                                $dob = $fad->dob;
+                                                                $date = new DateTime($dob);
+                                                                $now = new DateTime();
+                                                                $interval = $now->diff($date);
+                                                                ?>
+                                                                <h3 style="text-align: center" class="text-primary">Medi Lab</h3>
+                                                                <h5 style="text-align: center" >Full Blood Count</h5>
+                                                                <h4 style="text-align:center ;">contact us 0717843564</h4>
+
+                                                                Name   : {{$fad->name}}<br>
+                                                                Age    : {{$interval->y}}<br>
+                                                                Gender : {{$fad->gender}}
+
+                                                                <table class="table borderless">
+                                                                    <thead>
+                                                                    <tr>
+                                                                        <th>Test</th>
+                                                                        <th>Result</th>
+                                                                        <th>units</th>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                    <tr>
+                                                                        <td>Neutrophils</td>
+                                                                        <td>{{$fad->neutrophil}}</td>
+                                                                        <td>mg/dl</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Lymphocytes</td>
+                                                                        <td>{{$fad->lymphocytes}}</td>
+                                                                        <td>mg/dl</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Monocytes</td>
+                                                                        <td>{{$fad->monocytes}}</td>
+                                                                        <td>mg/dl</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Haemoglobin</td>
+                                                                        <td>{{$fad->hemoglobin}}</td>
+                                                                        <td>mg/dl</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Red Blood Cells</td>
+                                                                        <td>{{$fad->rbc}}</td>
+                                                                        <td>-</td>
+                                                                    </tr>
+                                                                    </tbody>
+                                                                </table>
+
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                <button type="button" class="btn btn-primary" onclick="window.print();">Print</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                </p>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <form action="{{route('delfbc')}}" method="post">
+                                                    {{csrf_field()}}
+                                                    <input type="hidden" name="id" value="{{$fad->id}}">
+                                                    <input type="submit" value="delete" class="btn btn-danger btn-xs">
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @endforeach
 
 
                                 </div>

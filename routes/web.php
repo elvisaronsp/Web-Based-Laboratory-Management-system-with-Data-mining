@@ -53,6 +53,12 @@ Route::post('fbc', [
     'as' => 'fbc'
 ]);
 
+Route::post('delfbc', [
+    'uses' => 'ReportController@delfbc',
+    'as' => 'delfbc'
+]);
+
+
 //route to add Liver Function
 Route::post('liver', [
     'uses' => 'ReportController@liver',
@@ -100,3 +106,4 @@ Route::post('updateEmployee', [
     'uses' => 'EmployeeController@updateEmployee',
     'as' => 'updateEmployee'
 ]);
+
