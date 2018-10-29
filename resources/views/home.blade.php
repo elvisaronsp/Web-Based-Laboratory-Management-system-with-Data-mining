@@ -171,9 +171,7 @@ foreach ($data as $d){
                 </div>
                 <div class="col-md-8">
                     <div class="profile-head">
-                        <h5>
-                            {{Auth::user()->name}}
-                        </h5>
+                        
 
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item">
@@ -1507,13 +1505,14 @@ foreach ($data as $d){
                                 $bsadmin = DB::table('blood_sugers')->leftjoin('users','users.id','blood_sugers.userId')->select(['users.name','users.email','users.dob','users.gender','blood_sugers.*'])->orderBy('blood_sugers.id', 'DESC')->get();
                                 $slpadmin = DB::table('serums')->leftjoin('users','users.id','serums.userId')->select(['users.name','users.email','users.dob','users.gender','serums.*'])->orderBy('serums.id', 'DESC')->get();
                                 $lfadmin = DB::table('liver_functions')->leftjoin('users','users.id','liver_functions.userId')->select(['users.name','users.email','users.dob','users.gender','liver_functions.*'])->orderBy('liver_functions.id', 'DESC')->get();
+                                $lpadmin = DB::table('lipid_profiles')->leftjoin('users','users.id','lipid_profiles.userId')->select(['users.name','users.email','users.dob','users.gender','lipid_profiles.*'])->orderBy('lipid_profiles.id', 'DESC')->get();
 
                                 ?>
 
                                 <h1 style="text-align: center">Full Blood Count</h1>
-                                <div class="row" style="height: 500px;overflow-y: scroll">
+                                <div class="row" style="max-height: 700px;overflow-y: scroll;border: solid #2c94ff">
                                     @foreach($fbcad as $fad)
-                                    <div class="panel-body" style="border: solid;border-radius: 25px;margin-bottom: 5px">
+                                    <div class="panel-body" style="border: solid;border-radius: 25px;margin-bottom: 5px;margin: 25px 25px;">
                                         <div class="row">
                                             <div class="col-md-1">
                                                 <img class="img-circle" src="{{asset('img/'.$fad->userId)}}" style="width: 60px;height: 60px;">
@@ -1526,7 +1525,7 @@ foreach ($data as $d){
                                                     @if($fad->paymentStatus==1)
                                                         <label class="label label-success" style="font-size: 18px">Paid</label>
                                                     @else
-                                                        <label class="label label-danger" style="font-size: 18px">Paid</label>
+                                                        <label class="label label-danger" style="font-size: 18px">Not Paid</label>
                                                     @endif
                                                 </p>
                                                 <p style="text-align: center">
@@ -1622,9 +1621,9 @@ foreach ($data as $d){
                                 </div>
 
                                 <h1 style="text-align: center">Blood Suger</h1>
-                                <div class="row" style="height: 500px;overflow-y: scroll">
+                                <div class="row" style="max-height: 700px;overflow-y: scroll;border: solid #2ab27b">
                                     @foreach($bsadmin as $bsad)
-                                        <div class="panel-body" style="border: solid;border-radius: 25px;margin-bottom: 5px">
+                                        <div class="panel-body" style="border: solid;border-radius: 25px;margin-bottom: 5px;margin: 25px 25px;">
                                             <div class="row">
                                                 <div class="col-md-1">
                                                     <img class="img-circle" src="{{asset('img/'.$bsad->userId)}}" style="width: 60px;height: 60px;">
@@ -1637,7 +1636,7 @@ foreach ($data as $d){
                                                         @if($bsad->paymentStatus==1)
                                                             <label class="label label-success" style="font-size: 18px">Paid</label>
                                                         @else
-                                                            <label class="label label-danger" style="font-size: 18px">Paid</label>
+                                                            <label class="label label-danger" style="font-size: 18px">Not Paid</label>
                                                         @endif
                                                     </p>
                                                     <p style="text-align: center">
@@ -1713,9 +1712,9 @@ foreach ($data as $d){
                                 </div>
 
                                 <h1 style="text-align: center">Serum Lipid Profile</h1>
-                                <div class="row" style="height: 400px;overflow-y: scroll">
+                                <div class="row" style="max-height: 700px;overflow-y: scroll;border: solid #2c94ff">
                                     @foreach($slpadmin as $slpad)
-                                        <div class="panel-body" style="border: solid;border-radius: 25px;margin-bottom: 5px">
+                                        <div class="panel-body" style="border: solid;border-radius: 25px;margin-bottom: 5px;margin: 25px 25px;">
                                             <div class="row">
                                                 <div class="col-md-1">
                                                     <img class="img-circle" src="{{asset('img/'.$slpad->userId)}}" style="width: 60px;height: 60px;">
@@ -1728,7 +1727,7 @@ foreach ($data as $d){
                                                         @if($slpad->paymentStatus==1)
                                                             <label class="label label-success" style="font-size: 18px">Paid</label>
                                                         @else
-                                                            <label class="label label-danger" style="font-size: 18px">Paid</label>
+                                                            <label class="label label-danger" style="font-size: 18px">Not Paid</label>
                                                         @endif
                                                     </p>
                                                     <p style="text-align: center">
@@ -1804,9 +1803,119 @@ foreach ($data as $d){
                                 </div>
 
                                 <h1 style="text-align: center">Lipid Profile</h1>
-                                <div class="row" style="height: 400px;overflow-y: scroll">
+                                <div class="row" style="max-height: 700px;overflow-y: scroll;border: solid #2ab27b">
+                                    @foreach($lpadmin as $lpad)
+                                        <div class="panel-body" style="border: solid;border-radius: 25px;margin-bottom: 5px;margin: 25px 25px;">
+                                            <div class="row">
+                                                <div class="col-md-1">
+                                                    <img class="img-circle" src="{{asset('img/'.$lpad->userId)}}" style="width: 60px;height: 60px;">
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <p>Created : {{$lpad->created_at}}</p>
+                                                    <p>Name : {{$lpad->name}}</p>
+                                                    <p>Email : {{$lpad->email}}</p>
+                                                    <p>
+                                                        @if($lpad->paymentStatus==1)
+                                                            <label class="label label-success" style="font-size: 18px">Paid</label>
+                                                        @else
+                                                            <label class="label label-danger" style="font-size: 18px">Not Paid</label>
+                                                        @endif
+                                                    </p>
+                                                    <p style="text-align: center">
+                                                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#lpadminview{{$lpad->id}}">
+                                                            View Report
+                                                        </button>
+
+                                                        <!-- Modal -->
+                                                    <div class="modal fade" id="lpadminview{{$lpad->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h1 style="text-align: center" class="modal-title" id="exampleModalLabel">Lipid Profile</h1>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div id="section-to-print" class="modal-body section-to-print">
+                                                                    <?php
+                                                                    $dob = $lpad->dob;
+                                                                    $date = new DateTime($dob);
+                                                                    $now = new DateTime();
+                                                                    $interval = $now->diff($date);
+                                                                    ?>
+                                                                    <h3 style="text-align: center" class="text-primary">Medi Lab</h3>
+                                                                    <h5 style="text-align: center" >Lipid Profile</h5>
+                                                                    <h4 style="text-align:center ;">contact us 0717843564</h4>
+
+                                                                    Name   : {{$lpad->name}}<br>
+                                                                    Age    : {{$interval->y}}<br>
+                                                                    Gender : {{$lpad->gender}}
+
+                                                                    <table class="table borderless">
+                                                                        <thead>
+                                                                        <tr>
+                                                                            <th>Test</th>
+                                                                            <th>Result</th>
+                                                                            <th>units</th>
+                                                                        </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                        <tr>
+                                                                            <td>Serum Cholestrol</td>
+                                                                            <td>{{$lpad->serum}}</td>
+                                                                            <td>mg/dl</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Triglycerides</td>
+                                                                            <td>{{$lpad->trigly}}</td>
+                                                                            <td>mg/dl</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>HDL Cholestrol</td>
+                                                                            <td>{{$lpad->hdl}}</td>
+                                                                            <td>mg/dl</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>VLDL Cholestrol</td>
+                                                                            <td>{{$lpad->vldl}}</td>
+                                                                            <td>mg/dl</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Cholestrol/HDL Ratio</td>
+                                                                            <td>{{$lpad->cholestrol}}</td>
+                                                                            <td>-</td>
+                                                                        </tr>
+                                                                        </tbody>
+                                                                    </table>
+
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                    <button type="button" class="btn btn-primary" onclick="window.print();">Print</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                    </p>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <form action="{{route('dellp')}}" method="post">
+                                                        {{csrf_field()}}
+                                                        <input type="hidden" name="id" value="{{$lpad->id}}">
+                                                        <input type="submit" value="delete" class="btn btn-danger btn-xs">
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+
+                                <br><h1 style="text-align: center">Liver Function Test</h1>
+                                <div class="row" style="max-height: 700px;overflow-y: scroll;border: solid #2c94ff">
                                     @foreach($lfadmin as $lfad)
-                                        <div class="panel-body" style="border: solid;border-radius: 25px;margin-bottom: 5px">
+                                        <div class="panel-body" style="border: solid;border-radius: 25px;margin-bottom: 5px;margin: 25px 25px;">
                                             <div class="row">
                                                 <div class="col-md-1">
                                                     <img class="img-circle" src="{{asset('img/'.$lfad->userId)}}" style="width: 60px;height: 60px;">
@@ -1819,7 +1928,7 @@ foreach ($data as $d){
                                                         @if($lfad->paymentStatus==1)
                                                             <label class="label label-success" style="font-size: 18px">Paid</label>
                                                         @else
-                                                            <label class="label label-danger" style="font-size: 18px">Paid</label>
+                                                            <label class="label label-danger" style="font-size: 18px">Not Paid</label>
                                                         @endif
                                                     </p>
                                                     <p style="text-align: center">
@@ -1832,7 +1941,7 @@ foreach ($data as $d){
                                                         <div class="modal-dialog" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">Lipid Profile</h5>
+                                                                    <h1 style="text-align: center" class="modal-title" id="exampleModalLabel">Lipid Profile</h1>
                                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                         <span aria-hidden="true">&times;</span>
                                                                     </button>
@@ -1911,10 +2020,6 @@ foreach ($data as $d){
                                             </div>
                                         </div>
                                     @endforeach
-                                </div>
-
-                                <h1 style="text-align: center">Liver Function Test</h1>
-                                <div class="row" style="height: 400px;overflow-y: scroll">
 
                                 </div>
                                 {{--<canvas id="myChart" width="350" height="350"></canvas>--}}

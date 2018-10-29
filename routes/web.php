@@ -70,6 +70,10 @@ Route::post('dellf', [
     'uses' => 'ReportController@dellf',
     'as' => 'dellf'
 ]);
+Route::post('dellp', [
+    'uses' => 'ReportController@dellp',
+    'as' => 'dellp'
+]);
 
 
 

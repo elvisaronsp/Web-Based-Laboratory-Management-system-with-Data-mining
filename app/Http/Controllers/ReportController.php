@@ -196,6 +196,13 @@ class ReportController extends Controller
 
 
     }
+    public function dellp(Request $request){
+        DB::table('lipid_profiles')->where('id',$request->id)->delete();
+        Session::put('delr', 'report delete Successfully');
+        return back();
+
+
+    }
 
 
 
