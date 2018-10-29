@@ -2,9 +2,61 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8cae6d0c-acd3-4a85-9a04-387061e47720" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ReportController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ReportController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/animate.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/bootstrap.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/core-style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/font-awesome.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/magnific-popup.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/medilife-icons.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/nice-select.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/owl.carousel.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/style.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/themify-icons.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/bg-img/about1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/bg-img/benefits.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/bg-img/breadcumb1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/bg-img/breadcumb2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/bg-img/breadcumb3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/bg-img/g1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/bg-img/g2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/bg-img/g3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/bg-img/g4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/bg-img/hero1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/bg-img/medical1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/bg-img/tab.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/bg-img/video.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/bg-img/video2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/blog-img/1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/blog-img/2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/blog-img/3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/blog-img/4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/blog-img/5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/blog-img/6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/blog-img/7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/blog-img/ln1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/blog-img/ln2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/blog-img/ln3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/blog-img/p1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/blog-img/p2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/blog-img/p3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/core-img/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/core-img/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/core-img/play.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/core-img/plus.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/icons/alarm-clock.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/icons/envelope.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/icons/map-pin.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/active.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bootstrap.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/jquery/jquery-2.2.4.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/map-active.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/plugins.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/popper.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -41,14 +93,16 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
+          <entry key="css" value="2" />
           <entry key="env" value="4" />
-          <entry key="php" value="54" />
+          <entry key="php" value="56" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key=".env file" value="3" />
-          <entry key="Blade" value="7" />
+          <entry key="Blade" value="9" />
+          <entry key="CSS" value="2" />
           <entry key="PHP" value="47" />
           <entry key="PLAIN_TEXT" value="1" />
         </counts>
@@ -56,13 +110,13 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="env" value="9" />
-          <entry key="php" value="12817" />
+          <entry key="php" value="12916" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key=".env file" value="6" />
-          <entry key="Blade" value="8802" />
+          <entry key="Blade" value="8901" />
           <entry key="PHP" value="4015" />
           <entry key="PLAIN_TEXT" value="3" />
         </counts>
@@ -71,11 +125,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/home.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="1627" column="124" selection-start-line="1627" selection-start-column="124" selection-end-line="1627" selection-end-column="124" />
+            <state relative-caret-position="72">
+              <caret line="4" column="4" selection-start-line="2" selection-start-column="8" selection-end-line="4" selection-end-column="4" />
               <folding>
                 <element signature="n#button#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#9;n#div#0;n#!!top" />
                 <element signature="n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#9;n#div#0;n#!!top" />
@@ -85,15 +139,17 @@
                 <element signature="n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#4;n#div#0;n#div#1;n#div#9;n#div#0;n#!!top" />
                 <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#14;n#div#0;n#!!top" expanded="true" />
                 <element signature="e#0#152520#0#Blade" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#13;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#13;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#label#0;n#p#2;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#13;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#label#1;n#p#2;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#13;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#p#3;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#13;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#14;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#14;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#label#0;n#p#3;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#14;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#label#1;n#p#3;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#14;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#4;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#14;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#p#3;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#13;n#div#0;n#!!top" />
                 <element signature="n#button#0;n#p#3;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#13;n#div#0;n#!!top" />
                 <element signature="n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#13;n#div#0;n#!!top" />
                 <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#14;n#div#0;n#!!top" expanded="true" />
+                <element signature="e#0#168991#0#Blade" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#14;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#14;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#label#0;n#p#3;n#div#1;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#14;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#label#1;n#p#3;n#div#1;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#14;n#div#0;n#!!top" expanded="true" />
@@ -107,12 +163,11 @@
                 <element signature="n#style#0;n#label#1;n#p#3;n#div#1;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#1;n#div#14;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#p#4;n#div#1;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#1;n#div#14;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#h1#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#1;n#div#14;n#div#0;n#!!top" expanded="true" />
-                <element signature="e#135574#135581#1#HTML" expanded="true" />
+                <element signature="e#138791#138798#1#HTML" expanded="true" />
                 <element signature="n#style#0;n#h3#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#1;n#div#14;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#h5#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#1;n#div#14;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#h4#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#1;n#div#14;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#3;n#div#1;n#div#0;n#div#1;n#div#14;n#div#0;n#!!top" expanded="true" />
-                <element signature="e#0#193568#0#Blade" />
                 <element signature="n#style#0;n#div#0;n#div#3;n#div#1;n#div#0;n#div#1;n#div#14;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#div#3;n#div#1;n#div#0;n#div#1;n#div#14;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#label#0;n#p#3;n#div#1;n#div#0;n#div#0;n#div#3;n#div#1;n#div#0;n#div#1;n#div#14;n#div#0;n#!!top" expanded="true" />
@@ -120,13 +175,39 @@
                 <element signature="n#style#0;n#p#4;n#div#1;n#div#0;n#div#0;n#div#3;n#div#1;n#div#0;n#div#1;n#div#14;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#h1#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#3;n#div#1;n#div#0;n#div#1;n#div#14;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#4;n#div#1;n#div#0;n#div#1;n#div#14;n#div#0;n#!!top" expanded="true" />
-                <element signature="e#0#184380#0#Blade" />
                 <element signature="n#style#0;n#div#0;n#div#4;n#div#1;n#div#0;n#div#1;n#div#14;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#div#4;n#div#1;n#div#0;n#div#1;n#div#14;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#label#0;n#p#3;n#div#1;n#div#0;n#div#0;n#div#4;n#div#1;n#div#0;n#div#1;n#div#14;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#label#1;n#p#3;n#div#1;n#div#0;n#div#0;n#div#4;n#div#1;n#div#0;n#div#1;n#div#14;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#p#4;n#div#1;n#div#0;n#div#0;n#div#4;n#div#1;n#div#0;n#div#1;n#div#14;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#h1#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#4;n#div#1;n#div#0;n#div#1;n#div#14;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/welcome.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-36">
+              <caret line="41" column="103" lean-forward="true" selection-start-line="41" selection-start-column="103" selection-end-line="41" selection-end-column="103" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/css/style.css">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/layouts/app.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="292">
+              <caret line="157" column="60" selection-start-line="157" selection-start-column="60" selection-end-line="157" selection-end-column="60" />
+              <folding>
+                <element signature="n#style#0;n#ul#0;n#li#2;n#ul#1;n#div#1;n#div#0;n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#li#0;n#ul#0;n#li#3;n#ul#1;n#div#1;n#div#0;n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -169,7 +250,7 @@
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ReportController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="414">
-              <caret line="199" column="22" lean-forward="true" selection-start-line="199" selection-start-column="22" selection-end-line="199" selection-end-column="22" />
+              <caret line="199" column="22" selection-start-line="199" selection-start-column="22" selection-end-line="199" selection-end-column="22" />
               <folding>
                 <element signature="e#40#59#0#PHP" expanded="true" />
               </folding>
@@ -208,6 +289,7 @@
       <find>huuu</find>
       <find>panel-bod</find>
       <find>hutt</find>
+      <find>{{Auth</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -216,13 +298,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/PaymentController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" />
         <option value="$PROJECT_DIR$/resources/views/auth/register.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" />
         <option value="$PROJECT_DIR$/app/User.php" />
-        <option value="$PROJECT_DIR$/resources/views/welcome.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/2018_10_10_130625_create_blood_sugers_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2018_10_11_111155_create_lipid_profiles_table.php" />
         <option value="$PROJECT_DIR$/.env" />
@@ -239,6 +319,8 @@
         <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ReportController.php" />
         <option value="$PROJECT_DIR$/resources/views/home.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/welcome.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
       </list>
     </option>
   </component>
@@ -414,7 +496,27 @@
               <item name="Web-Based-Laboratory-Management-system-with-Data-mining" type="b2602c69:ProjectViewProjectNode" />
               <item name="Web-Based-Laboratory-Management-system-with-Data-mining" type="462c0819:PsiDirectoryNode" />
               <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Web-Based-Laboratory-Management-system-with-Data-mining" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Web-Based-Laboratory-Management-system-with-Data-mining" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+              <item name="style.css" type="620a8d5e:NestingTreeNode" />
+            </path>
+            <path>
+              <item name="Web-Based-Laboratory-Management-system-with-Data-mining" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Web-Based-Laboratory-Management-system-with-Data-mining" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
               <item name="img" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Web-Based-Laboratory-Management-system-with-Data-mining" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Web-Based-Laboratory-Management-system-with-Data-mining" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="img" type="462c0819:PsiDirectoryNode" />
+              <item name="icons" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Web-Based-Laboratory-Management-system-with-Data-mining" type="b2602c69:ProjectViewProjectNode" />
@@ -461,6 +563,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$/config" />
       <recent name="$PROJECT_DIR$" />
     </key>
@@ -504,18 +607,18 @@
       <workItem from="1540563112032" duration="509000" />
       <workItem from="1540734695838" duration="10398000" />
       <workItem from="1540808428032" duration="3412000" />
-      <workItem from="1540817750412" duration="6297000" />
+      <workItem from="1540817750412" duration="9486000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="86588000" />
+    <option name="totallyTimeSpent" value="89777000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1366" height="741" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.33156297" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.33156297" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -544,13 +647,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/app.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2052">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/paypal.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -558,13 +654,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
           <caret line="17" column="51" selection-start-line="17" selection-start-column="51" selection-end-line="17" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/welcome.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>
@@ -722,7 +811,7 @@
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ReportController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="414">
-          <caret line="199" column="22" lean-forward="true" selection-start-line="199" selection-start-column="22" selection-end-line="199" selection-end-column="22" />
+          <caret line="199" column="22" selection-start-line="199" selection-start-column="22" selection-end-line="199" selection-end-column="22" />
           <folding>
             <element signature="e#40#59#0#PHP" expanded="true" />
           </folding>
@@ -731,8 +820,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/home.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="1627" column="124" selection-start-line="1627" selection-start-column="124" selection-end-line="1627" selection-end-column="124" />
+        <state relative-caret-position="72">
+          <caret line="4" column="4" selection-start-line="2" selection-start-column="8" selection-end-line="4" selection-end-column="4" />
           <folding>
             <element signature="n#button#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#9;n#div#0;n#!!top" />
             <element signature="n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#9;n#div#0;n#!!top" />
@@ -742,15 +831,17 @@
             <element signature="n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#4;n#div#0;n#div#1;n#div#9;n#div#0;n#!!top" />
             <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#14;n#div#0;n#!!top" expanded="true" />
             <element signature="e#0#152520#0#Blade" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#13;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#13;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#label#0;n#p#2;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#13;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#label#1;n#p#2;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#13;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#3;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#13;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#14;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#14;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#p#3;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#14;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#1;n#p#3;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#14;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#4;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#14;n#div#0;n#!!top" expanded="true" />
             <element signature="n#p#3;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#13;n#div#0;n#!!top" />
             <element signature="n#button#0;n#p#3;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#13;n#div#0;n#!!top" />
             <element signature="n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#13;n#div#0;n#!!top" />
             <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#14;n#div#0;n#!!top" expanded="true" />
+            <element signature="e#0#168991#0#Blade" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#14;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#14;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#label#0;n#p#3;n#div#1;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#14;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#label#1;n#p#3;n#div#1;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#14;n#div#0;n#!!top" expanded="true" />
@@ -764,12 +855,11 @@
             <element signature="n#style#0;n#label#1;n#p#3;n#div#1;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#1;n#div#14;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#p#4;n#div#1;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#1;n#div#14;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#h1#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#1;n#div#14;n#div#0;n#!!top" expanded="true" />
-            <element signature="e#135574#135581#1#HTML" expanded="true" />
+            <element signature="e#138791#138798#1#HTML" expanded="true" />
             <element signature="n#style#0;n#h3#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#1;n#div#14;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#h5#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#1;n#div#14;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#h4#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#1;n#div#14;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#3;n#div#1;n#div#0;n#div#1;n#div#14;n#div#0;n#!!top" expanded="true" />
-            <element signature="e#0#193568#0#Blade" />
             <element signature="n#style#0;n#div#0;n#div#3;n#div#1;n#div#0;n#div#1;n#div#14;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#div#3;n#div#1;n#div#0;n#div#1;n#div#14;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#label#0;n#p#3;n#div#1;n#div#0;n#div#0;n#div#3;n#div#1;n#div#0;n#div#1;n#div#14;n#div#0;n#!!top" expanded="true" />
@@ -777,13 +867,33 @@
             <element signature="n#style#0;n#p#4;n#div#1;n#div#0;n#div#0;n#div#3;n#div#1;n#div#0;n#div#1;n#div#14;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#h1#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#3;n#div#1;n#div#0;n#div#1;n#div#14;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#4;n#div#1;n#div#0;n#div#1;n#div#14;n#div#0;n#!!top" expanded="true" />
-            <element signature="e#0#184380#0#Blade" />
             <element signature="n#style#0;n#div#0;n#div#4;n#div#1;n#div#0;n#div#1;n#div#14;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#div#4;n#div#1;n#div#0;n#div#1;n#div#14;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#label#0;n#p#3;n#div#1;n#div#0;n#div#0;n#div#4;n#div#1;n#div#0;n#div#1;n#div#14;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#label#1;n#p#3;n#div#1;n#div#0;n#div#0;n#div#4;n#div#1;n#div#0;n#div#1;n#div#14;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#p#4;n#div#1;n#div#0;n#div#0;n#div#4;n#div#1;n#div#0;n#div#1;n#div#14;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#h1#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#4;n#div#1;n#div#0;n#div#1;n#div#14;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/style.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/welcome.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-36">
+          <caret line="41" column="103" lean-forward="true" selection-start-line="41" selection-start-column="103" selection-end-line="41" selection-end-column="103" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/app.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="292">
+          <caret line="157" column="60" selection-start-line="157" selection-start-column="60" selection-end-line="157" selection-end-column="60" />
+          <folding>
+            <element signature="n#style#0;n#ul#0;n#li#2;n#ul#1;n#div#1;n#div#0;n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#0;n#ul#0;n#li#3;n#ul#1;n#div#1;n#div#0;n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

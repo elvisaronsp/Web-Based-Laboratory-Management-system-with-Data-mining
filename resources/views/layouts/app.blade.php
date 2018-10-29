@@ -5,114 +5,115 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+    {{--<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">--}}
+    {{--<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">--}}
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Medi Lab') }}</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-    <style>
-        body{
-            background: -webkit-linear-gradient(left, #3931af, #00c6ff);
-        }
-        .emp-profile{
-            padding: 3%;
-            margin-top: 3%;
-            margin-bottom: 3%;
-            border-radius: 0.5rem;
-            background: #fff;
-        }
-        .profile-img{
-            text-align: center;
-        }
-        .profile-img img{
-            width: 70%;
-            height: 100%;
-        }
-        .profile-img .file {
-            position: relative;
-            overflow: hidden;
-            margin-top: -20%;
-            width: 70%;
-            border: none;
-            border-radius: 0;
-            font-size: 15px;
-            background: #212529b8;
-        }
-        .profile-img .file input {
-            position: absolute;
-            opacity: 0;
-            right: 0;
-            top: 0;
-        }
-        .profile-head h5{
-            color: #333;
-        }
-        .profile-head h6{
-            color: #0062cc;
-        }
-        .profile-edit-btn{
-            border: none;
-            border-radius: 1.5rem;
-            width: 70%;
-            padding: 2%;
-            font-weight: 600;
-            color: #6c757d;
-            cursor: pointer;
-        }
-        .proile-rating{
-            font-size: 12px;
-            color: #818182;
-            margin-top: 5%;
-        }
-        .proile-rating span{
-            color: #495057;
-            font-size: 15px;
-            font-weight: 600;
-        }
-        .profile-head .nav-tabs{
-            margin-bottom:5%;
-        }
-        .profile-head .nav-tabs .nav-link{
-            font-weight:600;
-            border: none;
-        }
-        .profile-head .nav-tabs .nav-link.active{
-            border: none;
-            border-bottom:2px solid #0062cc;
-        }
-        .profile-work{
-            padding: 14%;
-            margin-top: -15%;
-        }
-        .profile-work p{
-            font-size: 12px;
-            color: #818182;
-            font-weight: 600;
-            margin-top: 10%;
-        }
-        .profile-work a{
-            text-decoration: none;
-            color: #495057;
-            font-weight: 600;
-            font-size: 14px;
-        }
-        .profile-work ul{
-            list-style: none;
-        }
-        .profile-tab label{
-            font-weight: 600;
-        }
-        .profile-tab p{
-            font-weight: 600;
-            color: #0062cc;
-        }
-    </style>
+    {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>--}}
+
+    {{--<style>--}}
+        {{--body{--}}
+            {{--background: -webkit-linear-gradient(left, #3931af, #00c6ff);--}}
+        {{--}--}}
+        {{--.emp-profile{--}}
+            {{--padding: 3%;--}}
+            {{--margin-top: 3%;--}}
+            {{--margin-bottom: 3%;--}}
+            {{--border-radius: 0.5rem;--}}
+            {{--background: #fff;--}}
+        {{--}--}}
+        {{--.profile-img{--}}
+            {{--text-align: center;--}}
+        {{--}--}}
+        {{--.profile-img img{--}}
+            {{--width: 70%;--}}
+            {{--height: 100%;--}}
+        {{--}--}}
+        {{--.profile-img .file {--}}
+            {{--position: relative;--}}
+            {{--overflow: hidden;--}}
+            {{--margin-top: -20%;--}}
+            {{--width: 70%;--}}
+            {{--border: none;--}}
+            {{--border-radius: 0;--}}
+            {{--font-size: 15px;--}}
+            {{--background: #212529b8;--}}
+        {{--}--}}
+        {{--.profile-img .file input {--}}
+            {{--position: absolute;--}}
+            {{--opacity: 0;--}}
+            {{--right: 0;--}}
+            {{--top: 0;--}}
+        {{--}--}}
+        {{--.profile-head h5{--}}
+            {{--color: #333;--}}
+        {{--}--}}
+        {{--.profile-head h6{--}}
+            {{--color: #0062cc;--}}
+        {{--}--}}
+        {{--.profile-edit-btn{--}}
+            {{--border: none;--}}
+            {{--border-radius: 1.5rem;--}}
+            {{--width: 70%;--}}
+            {{--padding: 2%;--}}
+            {{--font-weight: 600;--}}
+            {{--color: #6c757d;--}}
+            {{--cursor: pointer;--}}
+        {{--}--}}
+        {{--.proile-rating{--}}
+            {{--font-size: 12px;--}}
+            {{--color: #818182;--}}
+            {{--margin-top: 5%;--}}
+        {{--}--}}
+        {{--.proile-rating span{--}}
+            {{--color: #495057;--}}
+            {{--font-size: 15px;--}}
+            {{--font-weight: 600;--}}
+        {{--}--}}
+        {{--.profile-head .nav-tabs{--}}
+            {{--margin-bottom:5%;--}}
+        {{--}--}}
+        {{--.profile-head .nav-tabs .nav-link{--}}
+            {{--font-weight:600;--}}
+            {{--border: none;--}}
+        {{--}--}}
+        {{--.profile-head .nav-tabs .nav-link.active{--}}
+            {{--border: none;--}}
+            {{--border-bottom:2px solid #0062cc;--}}
+        {{--}--}}
+        {{--.profile-work{--}}
+            {{--padding: 14%;--}}
+            {{--margin-top: -15%;--}}
+        {{--}--}}
+        {{--.profile-work p{--}}
+            {{--font-size: 12px;--}}
+            {{--color: #818182;--}}
+            {{--font-weight: 600;--}}
+            {{--margin-top: 10%;--}}
+        {{--}--}}
+        {{--.profile-work a{--}}
+            {{--text-decoration: none;--}}
+            {{--color: #495057;--}}
+            {{--font-weight: 600;--}}
+            {{--font-size: 14px;--}}
+        {{--}--}}
+        {{--.profile-work ul{--}}
+            {{--list-style: none;--}}
+        {{--}--}}
+        {{--.profile-tab label{--}}
+            {{--font-weight: 600;--}}
+        {{--}--}}
+        {{--.profile-tab p{--}}
+            {{--font-weight: 600;--}}
+            {{--color: #0062cc;--}}
+        {{--}--}}
+    {{--</style>--}}
 </head>
 <body>
     <div id="app">
@@ -130,7 +131,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        Medi Lab
                     </a>
                 </div>
 
@@ -147,13 +148,14 @@
                             <li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>
                         @else
+                            <li><a href="{{ route('home') }}">Home</a></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
-                                <ul class="dropdown-menu">
-                                    <li>
+                                <ul class="dropdown-menu" style="z-index: 1">
+                                    <li style="z-index: 1000">
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
