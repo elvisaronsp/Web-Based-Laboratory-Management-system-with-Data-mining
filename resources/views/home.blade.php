@@ -24,10 +24,19 @@
 $suger=array();
 $val = array();
 $count=1;
-$data = DB::table('blood_sugers')->where('userId',Auth::user()->id)->get();
+$data = DB::table('blood_sugers')->where('userId',Auth::user()->id)->where('paymentStatus',1)->get();
 foreach ($data as $d){
     array_push($suger,$count);
     array_push($val,$d->bloodSuger);
+    $count+=1;
+}
+$slps = array();
+$sval = array();
+$count = 1;
+$data = DB::table('serums')->where('userId',Auth::user()->id)->where('paymentStatus',1)->get();
+foreach ($data as $d){
+    array_push($slps,$count);
+    array_push($sval,$d->serum);
     $count+=1;
 }
 ?>
@@ -163,6 +172,10 @@ foreach ($data as $d){
                             </li>
 
                             <li class="nav-item">
+                                <a class="nav-link" id="home-tab" data-toggle="tab" href="#serum" role="tab" aria-controls="home" aria-selected="true">Serum Lipid Profile</a>
+                            </li>
+
+                            <li class="nav-item">
                                 <a class="nav-link" id="home-tab" data-toggle="tab" href="#lp" role="tab" aria-controls="home" aria-selected="true">Lipid Profile</a>
                             </li>
 
@@ -205,11 +218,99 @@ foreach ($data as $d){
                         <div class="tab-pane fade active in" id="bs" role="tabpanel" aria-labelledby="home-tab">
 
                             @foreach($sugers as $bs)
+                                <div class="panel-body" style="border:solid; border-radius: 25px">
+                                    <div class="row">
+                                        <div class="col-md-6">
+
+                                            <p>Your Blood Suger of the date {{$bs->created_at}}</p>
+
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    @if($bs->paymentStatus==0)
+                                                        <form action="{{route('reportPayment')}}" method="post">
+                                                            {{csrf_field()}}
+                                                            <input type="hidden" name="amount" value="1">
+                                                            <input type="submit" style="float: right" class="btn btn-warning" value="pay">
+                                                        </form>
+                                                    @endif
+                                                </div>
+                                                <div class="col-md-6">
+                                                    @if($bs->paymentStatus==1)
+                                                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#bs{{$bs->id}}">
+                                                            View Report
+                                                        </button>
+
+                                                        <!-- Modal -->
+                                                        <div class="modal fade" id="bs{{$bs->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="exampleModalLabel">Blood Suger Test</h5>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div id="section-to-print" class="modal-body section-to-print">
+                                                                        <?php
+                                                                        $dob = Auth::user()->dob;
+                                                                        $date = new DateTime($dob);
+                                                                        $now = new DateTime();
+                                                                        $interval = $now->diff($date);
+                                                                        ?>
+                                                                        <h3 style="text-align: center" class="text-primary">Medi Lab</h3>
+                                                                        <h5 style="text-align: center">Blood Suger List</h5>
+                                                                        <h4 style="text-align:center ;">contact us 0717843564</h4>
+
+                                                                        Name   : {{Auth::user()->name}}<br>
+                                                                        Age    : {{$interval->y}}<br>
+                                                                        Gender : {{Auth::user()->gender}}
+                                                                        <table class="table borderless">
+                                                                            <thead>
+                                                                            <tr>
+                                                                                <th>Test</th>
+                                                                                <th>Result</th>
+                                                                                <th>units</th>
+                                                                            </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                            <tr>
+                                                                                <td>Blood Suger</td>
+                                                                                <td>{{$bs->bloodSuger}}</td>
+                                                                                <td>mg/dl</td>
+                                                                            </tr>
+                                                                            </tbody>
+                                                                        </table>
+
+
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                        <button type="button" class="btn btn-primary" onclick="window.print();">Print</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            @endforeach
+
+
+                        </div>
+                        <div class="tab-pane fade" id="serum" role="tabpanel" aria-labelledby="home-tab">
+
+                            @foreach($slp as $bs)
                             <div class="panel-body" style="border:solid; border-radius: 25px">
                             <div class="row">
                                 <div class="col-md-6">
 
-                                        <p>Your Blood Suger of the date {{$bs->created_at}}</p>
+                                        <p>Your Serum Lipi Profile of the date {{$bs->created_at}}</p>
 
                                 </div>
                                 <div class="col-md-6">
@@ -247,7 +348,7 @@ foreach ($data as $d){
                                                             $interval = $now->diff($date);
                                                             ?>
                                                             <h3 style="text-align: center" class="text-primary">Medi Lab</h3>
-                                                            <h5 style="text-align: center">Blood Suger List</h5>
+                                                            <h5 style="text-align: center">Serum Lipid Profile </h5>
                                                             <h4 style="text-align:center ;">contact us 0717843564</h4>
 
                                                             Name   : {{Auth::user()->name}}<br>
@@ -263,8 +364,8 @@ foreach ($data as $d){
                                                                     </thead>
                                                                     <tbody>
                                                                     <tr>
-                                                                        <td>Blood Suger</td>
-                                                                        <td>{{$bs->bloodSuger}}</td>
+                                                                        <td>Serum Creatinine</td>
+                                                                        <td>{{$bs->serum}}</td>
                                                                         <td>mg/dl</td>
                                                                     </tr>
                                                                     </tbody>
@@ -1008,10 +1109,7 @@ foreach ($data as $d){
                                 <li class="nav-item">
                                     <a class="naexceeds your upload_max_filesize ini directive v-link" id="sample-tab" data-toggle="tab" href="#sample" role="tab" aria-controls="profile" aria-selected="false">Sample Handling</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="naexceeds your upload_max_filesize ini directive v-link" id="stock-tab" data-toggle="tab" href="#stock" role="tab" aria-controls="profile" aria-selected="false">Stock Management</a>
-                                </li>
-                            </ul>
+                             </ul>
                         </div>
                     </div>
                     <div class="col-md-2">
@@ -1163,6 +1261,9 @@ foreach ($data as $d){
                                                                 <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#bs{{$users->id}}">
                                                                     + Blood Suger
                                                                 </button>
+                                                                <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#slp{{$users->id}}">
+                                                                    + Serum Lipid Profile
+                                                                </button>
                                                                 <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#lp{{$users->id}}">
                                                                     + Lipid Profile
                                                                 </button>
@@ -1241,6 +1342,38 @@ foreach ($data as $d){
                                                                                     <br>
                                                                                     <label>Fasting Blood Glucose mg/dl</label>
                                                                                     <input type="number" step="0.01" name="bsvalue" class="form-control" required>
+                                                                                    <br>
+                                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                                    <input  type="submit" class="btn btn-primary" value="Submit">
+                                                                                </form>
+                                                                            </div>
+                                                                            <div class="modal-footer">
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal fade" id="slp{{$users->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                    <div class="modal-dialog" role="document">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <h1 style="text-align: center" class="modal-title" id="exampleModalLabel">Serum Lipid Profile</h1>
+                                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                    <span aria-hidden="true">&times;</span>
+                                                                                </button>
+                                                                            </div>
+                                                                            <div id="section-to-print" class="modal-body section-to-print">
+                                                                                <form action="{{route('slp')}}" method="post">
+                                                                                    {{csrf_field()}}
+                                                                                    <input type="hidden" name="id" value="{{$users->id}}">
+                                                                                    <label>Payment Status</label>
+                                                                                    <select name="payment" class="form-control" required>
+                                                                                        <option value="1">Paid</option>
+                                                                                        <option value="0">Not Paid</option>
+                                                                                    </select>
+                                                                                    <br>
+                                                                                    <label>Serum Creatinine mg/dl</label>
+                                                                                    <input type="number" step="0.01" name="serum" class="form-control" required>
                                                                                     <br>
                                                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                                                                     <input  type="submit" class="btn btn-primary" value="Submit">
@@ -1360,13 +1493,30 @@ foreach ($data as $d){
 
                             </div>
                             <div class="tab-pane fade" id="viewReport" role="tabpanel" aria-labelledby="profile-tab">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <canvas id="myChart" width="350" height="350"></canvas>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <canvas id="myChart1" width="350" height="350"></canvas>
-                                    </div>
+                                <h1 style="text-align: center">Full Blood Count</h1>
+                                <div class="row" style="height: 400px;overflow-y: scroll">
+
+
+                                </div>
+
+                                <h1 style="text-align: center">Blood Suger</h1>
+                                <div class="row" style="height: 400px;overflow-y: scroll">
+
+                                </div>
+
+                                <h1 style="text-align: center">Serum Lipid Profile</h1>
+                                <div class="row" style="height: 400px;overflow-y: scroll">
+
+                                </div>
+
+                                <h1 style="text-align: center">Lipid Profile</h1>
+                                <div class="row" style="height: 400px;overflow-y: scroll">
+
+                                </div>
+
+                                <h1 style="text-align: center">Liver Function Test</h1>
+                                <div class="row" style="height: 400px;overflow-y: scroll">
+
                                 </div>
                                 {{--<canvas id="myChart" width="350" height="350"></canvas>--}}
                             </div>
@@ -1820,8 +1970,8 @@ foreach ($data as $d){
 </script>
    <script>
        var ctx = document.getElementById("myChart1").getContext("2d");
-       var lab = [1,2,3,4,5] ;
-       var dt =[135,88,100,110,95] ;
+       var lab = <?php echo json_encode($slps); ?>;
+       var dt =<?php echo json_encode($sval); ?>;
        var chart = new Chart(ctx, {
            // The type of chart we want to create
 
@@ -1832,8 +1982,8 @@ foreach ($data as $d){
                labels: lab,
                datasets: [
                    {
-                       label: "Suger Level",
-                       borderColor: "#000",
+                       label: "Serum Lipid Profile",
+                       borderColor: "rgb(255, 99, 132)",
                        data: dt
                    }
                ]

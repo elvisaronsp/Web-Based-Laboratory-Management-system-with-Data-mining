@@ -59,6 +59,11 @@ Route::post('liver', [
     'as' => 'liver'
 ]);
 
+Route::post('slp', [
+    'uses' => 'ReportController@slp',
+    'as' => 'slp'
+]);
+
 //route to add sample tranfer
 Route::post('sample', [
     'uses' => 'SampleController@addSample',
@@ -69,6 +74,7 @@ Route::post('deleteSample', [
     'uses' => 'SampleController@deleteSample',
     'as' => 'deleteSample'
 ]);
+
 
 Route::post('addPatient', [
     'uses' => 'ReportController@addPatient',

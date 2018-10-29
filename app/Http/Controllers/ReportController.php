@@ -6,6 +6,7 @@ use App\BloodSuger;
 use App\FullBloodCount;
 use App\LipidProfile;
 use App\LiverFunction;
+use App\Serum;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -16,6 +17,28 @@ use Illuminate\Support\Facades\Session;
 
 class ReportController extends Controller
 {
+    public function slp(Request $request){
+        $bs = new Serum();
+        $bs->paymentStatus=$request->payment;
+        $bs->userId=$request->id;
+        $bs->serum=$request->serum;
+        $bs->save();
+        Session::put('rpa', 'Report Updated Successfully');
+        $user=DB::table('users')->where('id',$request->id)->first();
+        $usere=$user->email;
+
+        if($request->serum>1.3 or $request->serum<0.8) {
+            $data = array('name' => "$user->name", "body" => "Test mail");
+
+            Mail::send('email', $data, function ($message) use ($usere) {
+                $message->to($usere)
+                    ->subject('Regarding Your Lab Reports');
+                $message->from('akashsahan963@gmail.com', 'Mebi Lab');
+            });
+        }
+
+        return back();
+    }
     public function bloodSuger(Request $request){
         $bs = new BloodSuger();
         $bs->paymentStatus=$request->payment;
