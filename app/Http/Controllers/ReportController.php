@@ -189,6 +189,15 @@ class ReportController extends Controller
 
     }
 
+    public function dellf(Request $request){
+        DB::table('liver_functions')->where('id',$request->id)->delete();
+        Session::put('delr', 'report delete Successfully');
+        return back();
+
+
+    }
+
+
 
 }
 

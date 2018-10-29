@@ -66,6 +66,11 @@ Route::post('delserum', [
     'as' => 'delserum'
 ]);
 
+Route::post('dellf', [
+    'uses' => 'ReportController@dellf',
+    'as' => 'dellf'
+]);
+
 
 
 //route to add Liver Function

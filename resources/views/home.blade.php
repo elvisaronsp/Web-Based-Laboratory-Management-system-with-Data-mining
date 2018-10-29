@@ -1805,92 +1805,112 @@ foreach ($data as $d){
 
                                 <h1 style="text-align: center">Lipid Profile</h1>
                                 <div class="row" style="height: 400px;overflow-y: scroll">
-                                    {{--@foreach($slpadmin as $slpad)--}}
-                                        {{--<div class="panel-body" style="border: solid;border-radius: 25px;margin-bottom: 5px">--}}
-                                            {{--<div class="row">--}}
-                                                {{--<div class="col-md-1">--}}
-                                                    {{--<img class="img-circle" src="{{asset('img/'.$slpad->userId)}}" style="width: 60px;height: 60px;">--}}
-                                                {{--</div>--}}
-                                                {{--<div class="col-md-9">--}}
-                                                    {{--<p>Created : {{$slpad->created_at}}</p>--}}
-                                                    {{--<p>Name : {{$slpad->name}}</p>--}}
-                                                    {{--<p>Email : {{$slpad->email}}</p>--}}
-                                                    {{--<p>--}}
-                                                        {{--@if($slpad->paymentStatus==1)--}}
-                                                            {{--<label class="label label-success" style="font-size: 18px">Paid</label>--}}
-                                                        {{--@else--}}
-                                                            {{--<label class="label label-danger" style="font-size: 18px">Paid</label>--}}
-                                                        {{--@endif--}}
-                                                    {{--</p>--}}
-                                                    {{--<p style="text-align: center">--}}
-                                                        {{--<button type="button" class="btn btn-success" data-toggle="modal" data-target="#serumdminview{{$slpad->id}}">--}}
-                                                            {{--View Report--}}
-                                                        {{--</button>--}}
+                                    @foreach($lfadmin as $lfad)
+                                        <div class="panel-body" style="border: solid;border-radius: 25px;margin-bottom: 5px">
+                                            <div class="row">
+                                                <div class="col-md-1">
+                                                    <img class="img-circle" src="{{asset('img/'.$lfad->userId)}}" style="width: 60px;height: 60px;">
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <p>Created : {{$lfad->created_at}}</p>
+                                                    <p>Name : {{$lfad->name}}</p>
+                                                    <p>Email : {{$lfad->email}}</p>
+                                                    <p>
+                                                        @if($lfad->paymentStatus==1)
+                                                            <label class="label label-success" style="font-size: 18px">Paid</label>
+                                                        @else
+                                                            <label class="label label-danger" style="font-size: 18px">Paid</label>
+                                                        @endif
+                                                    </p>
+                                                    <p style="text-align: center">
+                                                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#lfadminview{{$lfad->id}}">
+                                                            View Report
+                                                        </button>
 
-                                                        {{--<!-- Modal -->--}}
-                                                    {{--<div class="modal fade" id="serumdminview{{$slpad->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">--}}
-                                                        {{--<div class="modal-dialog" role="document">--}}
-                                                            {{--<div class="modal-content">--}}
-                                                                {{--<div class="modal-header">--}}
-                                                                    {{--<h1 style="text-align: center" class="modal-title" id="exampleModalLabel">Serum Lipid Profile</h1>--}}
-                                                                    {{--<button type="button" class="close" data-dismiss="modal" aria-label="Close">--}}
-                                                                        {{--<span aria-hidden="true">&times;</span>--}}
-                                                                    {{--</button>--}}
-                                                                {{--</div>--}}
-                                                                {{--<div id="section-to-print" class="modal-body section-to-print">--}}
-                                                                    {{--<?php--}}
-                                                                    {{--$dob = $slpad->dob;--}}
-                                                                    {{--$date = new DateTime($dob);--}}
-                                                                    {{--$now = new DateTime();--}}
-                                                                    {{--$interval = $now->diff($date);--}}
-                                                                    {{--?>--}}
-                                                                    {{--<h3 style="text-align: center" class="text-primary">Medi Lab</h3>--}}
-                                                                    {{--<h5 style="text-align: center">Serum Lipid Profile</h5>--}}
-                                                                    {{--<h4 style="text-align:center ;">contact us 0717843564</h4>--}}
+                                                        <!-- Modal -->
+                                                    <div class="modal fade" id="lfadminview{{$lfad->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Lipid Profile</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div id="section-to-print" class="modal-body section-to-print">
+                                                                    <?php
+                                                                    $dob = $lfad->dob;
+                                                                    $date = new DateTime($dob);
+                                                                    $now = new DateTime();
+                                                                    $interval = $now->diff($date);
+                                                                    ?>
+                                                                    <h3 style="text-align: center" class="text-primary">Medi Lab</h3>
+                                                                    <h5 style="text-align: center" >Liver Function Test</h5>
+                                                                    <h4 style="text-align:center ;">contact us 0717843564</h4>
 
-                                                                    {{--Name   : {{$slpad->name}}<br>--}}
-                                                                    {{--Age    : {{$interval->y}}<br>--}}
-                                                                    {{--Gender : {{$slpad->gender}}--}}
-                                                                    {{--<table class="table borderless">--}}
-                                                                        {{--<thead>--}}
-                                                                        {{--<tr>--}}
-                                                                            {{--<th>Test</th>--}}
-                                                                            {{--<th>Result</th>--}}
-                                                                            {{--<th>units</th>--}}
-                                                                        {{--</tr>--}}
-                                                                        {{--</thead>--}}
-                                                                        {{--<tbody>--}}
-                                                                        {{--<tr>--}}
-                                                                            {{--<td>Serum Creatinine</td>--}}
-                                                                            {{--<td>{{$slpad->serum}}</td>--}}
-                                                                            {{--<td>mg/dl</td>--}}
-                                                                        {{--</tr>--}}
-                                                                        {{--</tbody>--}}
-                                                                    {{--</table>--}}
+                                                                    Name   : {{$lfad->name}}<br>
+                                                                    Age    : {{$interval->y}}<br>
+                                                                    Gender : {{$lfad->gender}}
+
+                                                                    <table class="table borderless">
+                                                                        <thead>
+                                                                        <tr>
+                                                                            <th>Test</th>
+                                                                            <th>Result</th>
+                                                                            <th>units</th>
+                                                                        </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                        <tr>
+                                                                            <td>Total Protein</td>
+                                                                            <td>{{$lfad->totalProtein}}</td>
+                                                                            <td>mg/dl</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Albumin</td>
+                                                                            <td>{{$lfad->albumin}}</td>
+                                                                            <td>mg/dl</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Globulin</td>
+                                                                            <td>{{$lfad->globulin}}</td>
+                                                                            <td>mg/dl</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Alkaline</td>
+                                                                            <td>{{$lfad->alkaline}}</td>
+                                                                            <td>mg/dl</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Total Bilirubin</td>
+                                                                            <td>{{$lfad->totalBilirubin}}</td>
+                                                                            <td>-</td>
+                                                                        </tr>
+                                                                        </tbody>
+                                                                    </table>
+
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                    <button type="button" class="btn btn-primary" onclick="window.print();">Print</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
 
 
-                                                                {{--</div>--}}
-                                                                {{--<div class="modal-footer">--}}
-                                                                    {{--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>--}}
-                                                                    {{--<button type="button" class="btn btn-primary" onclick="window.print();">Print</button>--}}
-                                                                {{--</div>--}}
-                                                            {{--</div>--}}
-                                                        {{--</div>--}}
-                                                    {{--</div>--}}
-
-
-                                                    {{--</p>--}}
-                                                {{--</div>--}}
-                                                {{--<div class="col-md-2">--}}
-                                                    {{--<form action="{{route('delserum')}}" method="post">--}}
-                                                        {{--{{csrf_field()}}--}}
-                                                        {{--<input type="hidden" name="id" value="{{$slpad->id}}">--}}
-                                                        {{--<input type="submit" value="delete" class="btn btn-danger btn-xs">--}}
-                                                    {{--</form>--}}
-                                                {{--</div>--}}
-                                            {{--</div>--}}
-                                        {{--</div>--}}
-                                    {{--@endforeach--}}
+                                                    </p>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <form action="{{route('dellf')}}" method="post">
+                                                        {{csrf_field()}}
+                                                        <input type="hidden" name="id" value="{{$lfad->id}}">
+                                                        <input type="submit" value="delete" class="btn btn-danger btn-xs">
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
                                 </div>
 
                                 <h1 style="text-align: center">Liver Function Test</h1>
