@@ -27,7 +27,7 @@ class HomeController extends Controller
     public function index()
     {
         $user = DB::table('users')->where('role','patient')->get();
-        $lipidProfile = DB::table('lipid_profiles')->where('userId',Auth::user()->id)->get();
+        $lipidProfile = DB::table('lipid_profiles')->where('userId',Auth::user()->id)->orderBy('id','desc')->get();
         $sugers = DB::table('blood_sugers')->where('userId',Auth::user()->id)->orderBy('id','desc')->get();
         $fbc= DB::table('full_blood_counts')->where('userId',Auth::user()->id)->orderBy('id','desc')->get();
         $lft= DB::table('liver_functions')->where('userId',Auth::user()->id)->orderBy('id','desc')->get();

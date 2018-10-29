@@ -275,27 +275,27 @@ foreach ($data as $d){
 
 
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
-                            <li class="nav-item">
+                            <li class="nav-item" style="width: 15%">
                                 <a class="nav-link" id="home-tab" data-toggle="tab" href="#bs" role="tab" aria-controls="home" aria-selected="true">Blood Suger</a>
                             </li>
 
-                            <li class="nav-item">
-                                <a class="nav-link" id="home-tab" data-toggle="tab" href="#serum" role="tab" aria-controls="home" aria-selected="true">Serum Lipid Profile</a>
+                            <li class="nav-item" style="width: 15%">
+                                <a class="nav-link" id="home-tab" data-toggle="tab" href="#serum" role="tab" aria-controls="home" aria-selected="true">Serum Creatanine</a>
                             </li>
 
-                            <li class="nav-item">
+                            <li class="nav-item" style="width: 15%">
                                 <a class="nav-link" id="home-tab" data-toggle="tab" href="#lp" role="tab" aria-controls="home" aria-selected="true">Lipid Profile</a>
                             </li>
 
-                            <li class="nav-item">
+                            <li class="nav-item" style="width: 15%">
                                 <a class="nav-link" id="home-tab" data-toggle="tab" href="#fbc" role="tab" aria-controls="home" aria-selected="true">Full Blood Count</a>
                             </li>
 
-                            <li class="nav-item">
+                            <li class="nav-item" style="width: 15%">
                                 <a class="nav-link" id="home-tab" data-toggle="tab" href="#lft" role="tab" aria-controls="home" aria-selected="true">Liver Function Test</a>
                             </li>
 
-                            <li class="nav-item">
+                            <li class="nav-item" style="width: 15%">
                                 <a class="nav-link" id="profile-tab" data-toggle="tab" href="#summary" role="tab" aria-controls="profile" aria-selected="false">Summary</a>
                             </li>
                         </ul>
@@ -339,7 +339,9 @@ foreach ($data as $d){
                                                     @if($bs->paymentStatus==0)
                                                         <form action="{{route('reportPayment')}}" method="post">
                                                             {{csrf_field()}}
-                                                            <input type="hidden" name="amount" value="1">
+                                                            <input type="hidden" name="amount" value="2.88">
+                                                            <input type="hidden" name="rt" value="bs">
+                                                            <input type="hidden" name="id" value="{{$bs->id}}">
                                                             <input type="submit" style="float: right" class="btn btn-warning" value="pay">
                                                         </form>
                                                     @endif
@@ -418,7 +420,7 @@ foreach ($data as $d){
                             <div class="row">
                                 <div class="col-md-6">
 
-                                        <p>Your Serum Lipi Profile of the date {{$bs->created_at}}</p>
+                                        <p>Your Serum Creatanine of the date {{$bs->created_at}}</p>
 
                                 </div>
                                 <div class="col-md-6">
@@ -427,7 +429,9 @@ foreach ($data as $d){
                                             @if($bs->paymentStatus==0)
                                             <form action="{{route('reportPayment')}}" method="post">
                                                 {{csrf_field()}}
-                                                <input type="hidden" name="amount" value="1">
+                                                <input type="hidden" name="amount" value="7.48">
+                                                <input type="hidden" name="rt" value="sr">
+                                                <input type="hidden" name="id" value="{{$bs->id}}">
                                                 <input type="submit" style="float: right" class="btn btn-warning" value="pay">
                                             </form>
                                              @endif
@@ -514,7 +518,9 @@ foreach ($data as $d){
                                                 @if($lp->paymentStatus==0)
                                                 <form action="{{route('reportPayment')}}" method="post">
                                                     {{csrf_field()}}
-                                                    <input type="hidden" name="amount" value="1">
+                                                    <input type="hidden" name="amount" value="6.91">
+                                                    <input type="hidden" name="rt" value="lp">
+                                                    <input type="hidden" name="id" value="{{$lp->id}}">
                                                     <input type="submit" style="float: right" class="btn btn-warning" value="pay">
                                                 </form>
                                                     @endif
@@ -620,7 +626,9 @@ foreach ($data as $d){
                                                     @if($fb->paymentStatus==0)
                                                         <form action="{{route('reportPayment')}}" method="post">
                                                             {{csrf_field()}}
-                                                            <input type="hidden" name="amount" value="1">
+                                                            <input type="hidden" name="amount" value="2.88">
+                                                            <input type="hidden" name="rt" value="fbc">
+                                                            <input type="hidden" name="id" value="{{$fb->id}}">
                                                             <input type="submit" style="float: right" class="btn btn-warning" value="pay">
                                                         </form>
                                                     @endif
@@ -717,7 +725,7 @@ foreach ($data as $d){
                                     <div class="row">
                                         <div class="col-md-6">
 
-                                            <p>Your Lipid Profile report of the date {{$lf->created_at}}</p>
+                                            <p>Your Liver Function Test report of the date {{$lf->created_at}}</p>
 
                                         </div>
                                         <div class="col-md-6">
@@ -726,7 +734,9 @@ foreach ($data as $d){
                                                     @if($lf->paymentStatus==0)
                                                         <form action="{{route('reportPayment')}}" method="post">
                                                             {{csrf_field()}}
-                                                            <input type="hidden" name="amount" value="1">
+                                                            <input type="hidden" name="amount" value="14.97">
+                                                            <input type="hidden" name="rt" value="lft">
+                                                            <input type="hidden" name="id" value="{{$lf->id}}">
                                                             <input type="submit" style="float: right" class="btn btn-warning" value="pay">
                                                         </form>
                                                     @endif
@@ -879,17 +889,13 @@ foreach ($data as $d){
                     </div>
                     <div class="col-md-6">
                         <div class="profile-head">
-                            <h5>
-                                {{Auth::user()->name}}
-                            </h5>
+
 
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item">
                                     <a class="nav-link" id="home-tab" data-toggle="tab" href="#report" role="tab" aria-controls="home" aria-selected="true">Add Reports</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="naexceeds your upload_max_filesize ini directive v-link" id="profile-tab" data-toggle="tab" href="#summary" role="tab" aria-controls="profile" aria-selected="false">Summary</a>
-                                </li>
+
                             </ul>
                         </div>
                     </div>
@@ -954,6 +960,9 @@ foreach ($data as $d){
                                                     <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#lf{{$users->id}}">
                                                         + Liver function Test
                                                     </button>
+                                                    <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#slpmlt{{$users->id}}">
+                                                        + Serum Creatanine
+                                                    </button>
                                                     <!-- Modal -->
                                                     <div class="modal fade" id="fbc{{$users->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog" role="document">
@@ -970,7 +979,7 @@ foreach ($data as $d){
                                                                         <label>Payment Status</label>
                                                                         <select name="payment" class="form-control" required>
                                                                             <option value="1">Paid</option>
-                                                                            <option value="2">Not Paid</option>
+                                                                            <option value="0">Not Paid</option>
                                                                         </select>
                                                                         <br>
                                                                         <input type="hidden" name='id' class="form-control" value="{{$users->id}}" required>
@@ -1047,7 +1056,7 @@ foreach ($data as $d){
                                                                         <label>Payment Status</label>
                                                                         <select name="" class="form-control" required>
                                                                             <option value="1">Paid</option>
-                                                                            <option value="2">Not Paid</option>
+                                                                            <option value="0">Not Paid</option>
                                                                         </select>
                                                                         <br>
                                                                         <input type="hidden" class="form-control" value="{{$users->id}}" required>
@@ -1077,7 +1086,38 @@ foreach ($data as $d){
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <div class="modal fade" id="slpmlt{{$users->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h1 style="text-align: center" class="modal-title" id="exampleModalLabel">Serum Lipid Profile</h1>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div id="section-to-print" class="modal-body section-to-print">
+                                                                    <form action="{{route('slp')}}" method="post">
+                                                                        {{csrf_field()}}
+                                                                        <input type="hidden" name="id" value="{{$users->id}}">
+                                                                        <label>Payment Status</label>
+                                                                        <select name="payment" class="form-control" required>
+                                                                            <option value="1">Paid</option>
+                                                                            <option value="0">Not Paid</option>
+                                                                        </select>
+                                                                        <br>
+                                                                        <label>Serum Creatinine mg/dl</label>
+                                                                        <input type="number" step="0.01" name="serum" class="form-control" required>
+                                                                        <br>
+                                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                        <input  type="submit" class="btn btn-primary" value="Submit">
+                                                                    </form>
+                                                                </div>
+                                                                <div class="modal-footer">
 
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                     <div class="modal fade" id="lf{{$users->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog" role="document">
                                                             <div class="modal-content">
@@ -1093,7 +1133,7 @@ foreach ($data as $d){
                                                                         <label>Payment Status</label>
                                                                         <select name="payment" class="form-control" required>
                                                                             <option value="1">Paid</option>
-                                                                            <option value="2">Not Paid</option>
+                                                                            <option value="0">Not Paid</option>
                                                                         </select>
                                                                         <br>
                                                                         <input type="hidden" name='id' class="form-control" value="{{$users->id}}" required>
@@ -1138,17 +1178,7 @@ foreach ($data as $d){
 
 
                             </div>
-                            <div class="tab-pane fade" id="summary" role="tabpanel" aria-labelledby="profile-tab">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <canvas id="myChart" width="350" height="350"></canvas>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <canvas id="myChart1" width="350" height="350"></canvas>
-                                    </div>
-                                </div>
-                                {{--<canvas id="myChart" width="350" height="350"></canvas>--}}
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -1200,9 +1230,6 @@ foreach ($data as $d){
                     </div>
                     <div class="col-md-8">
                         <div class="profile-head">
-                            <h5>
-                                {{Auth::user()->name}}
-                            </h5>
 
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item">
@@ -1370,7 +1397,7 @@ foreach ($data as $d){
                                                                     + Blood Suger
                                                                 </button>
                                                                 <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#slp{{$users->id}}">
-                                                                    + Serum Lipid Profile
+                                                                    + Serum Creatanine
                                                                 </button>
                                                                 <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#lp{{$users->id}}">
                                                                     + Lipid Profile
@@ -1397,7 +1424,7 @@ foreach ($data as $d){
                                                                                     <label>Payment Status</label>
                                                                                     <select name="payment" class="form-control" required>
                                                                                         <option value="1">Paid</option>
-                                                                                        <option value="2">Not Paid</option>
+                                                                                        <option value="0">Not Paid</option>
                                                                                     </select>
                                                                                     <br>
                                                                                     <input type="hidden" name='id' class="form-control" value="{{$users->id}}" required>
@@ -1508,7 +1535,7 @@ foreach ($data as $d){
                                                                                     <label>Payment Status</label>
                                                                                     <select name="payment" class="form-control" required>
                                                                                         <option value="1">Paid</option>
-                                                                                        <option value="2">Not Paid</option>
+                                                                                        <option value="0">Not Paid</option>
                                                                                     </select>
                                                                                     <br>
                                                                                     <input type="hidden" name='id' class="form-control" value="{{$users->id}}" required>
@@ -1555,7 +1582,7 @@ foreach ($data as $d){
                                                                                     <label>Payment Status</label>
                                                                                     <select name="payment" class="form-control" required>
                                                                                         <option value="1">Paid</option>
-                                                                                        <option value="2">Not Paid</option>
+                                                                                        <option value="0">Not Paid</option>
                                                                                     </select>
                                                                                     <br>
                                                                                     <input type="hidden" name='id' class="form-control" value="{{$users->id}}" required>
@@ -1812,7 +1839,7 @@ foreach ($data as $d){
 
                                 </div>
 
-                                <h1 style="text-align: center">Serum Lipid Profile</h1>
+                                <h1 style="text-align: center">Serum Creatanine</h1>
                                 <div class="row" style="max-height: 700px;overflow-y: scroll;border: solid #2c94ff">
                                     @foreach($slpadmin as $slpad)
                                         <div class="panel-body" style="border: solid;border-radius: 25px;margin-bottom: 5px;margin: 25px 25px;">
