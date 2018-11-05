@@ -28,7 +28,7 @@ class ReportController extends Controller
         $usere=$user->email;
 
         if($request->serum>1.3 or $request->serum<0.8) {
-            $data = array('name' => "$user->name", "body" => "Test mail");
+            $data = array('name' => "$user->name", "body" => "Alert");
 
             Mail::send('email', $data, function ($message) use ($usere) {
                 $message->to($usere)
@@ -50,7 +50,7 @@ class ReportController extends Controller
         $usere=$user->email;
 
         if($request->bsvalue>=120 or $request->bsvalue<=85){
-            $data = array('name'=>"$user->name", "body" => "Test mail");
+            $data = array('name'=>"$user->name", "body" => "Alert");
 
             Mail::send('email', $data, function($message) use($usere) {
                 $message->to($usere)
@@ -81,7 +81,7 @@ class ReportController extends Controller
 
 
                 if($count==4){
-                    $data = array('name'=>"$user->name", "body" => "Test mail");
+                    $data = array('name'=>"$user->name", "body" => "Alert");
 
                     Mail::send('email', $data, function($message) use($usere) {
                         $message->to($usere)
@@ -90,7 +90,7 @@ class ReportController extends Controller
                     });
                 }else{
                     if($value[0]-$value[4]>=15 or $value[4]-$value[0]>15){
-                        $data = array('name'=>"$user->name", "body" => "Test mail");
+                        $data = array('name'=>"$user->name", "body" => "Alert");
 
                         Mail::send('email', $data, function($message) use($usere) {
                             $message->to($usere)
